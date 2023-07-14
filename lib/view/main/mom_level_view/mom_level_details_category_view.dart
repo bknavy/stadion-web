@@ -7,6 +7,7 @@ import 'package:stadion_project/view/custom_widget/buttons/button_with_rollover.
 import 'package:stadion_project/view/custom_widget/custom_text.dart';
 import 'package:stadion_project/view/custom_widget/view_container/view_container.dart';
 import 'package:stadion_project/view/main/hamburger_menu/movement_guide_view.dart';
+import 'package:stadion_project/view/main/mom_level_view/popup/mom_level_media_popup_view.dart';
 import 'package:stadion_project/view/main/mom_level_view/popup/mom_level_record_popup_view.dart';
 
 //로그인 뷰에서 사용될 Get X controller.
@@ -36,6 +37,13 @@ class MomLevelDetailsCategoryViewController extends GetxController {
   void RecordFind() {
     Get.dialog(
       MomLevelRecordPopupView(),
+      barrierColor: Colors.transparent,
+    );
+  }
+
+  void MediaFind() {
+    Get.dialog(
+      MomLevelMediaPopupView(),
       barrierColor: Colors.transparent,
     );
   }
@@ -233,7 +241,9 @@ class MomLevelDetailsCategoryView
                         ),
                         const SizedBox(width: 201),
                         GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            controller.MediaFind();
+                          },
                           child: Icon(
                             Icons.add_box_outlined,
                             size: 35,
