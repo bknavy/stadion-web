@@ -13,6 +13,7 @@ import '../../style_config/text_theme.dart';
 import '../custom_widget/buttons/button_with_rollover.dart';
 import '../custom_widget/custom_text.dart';
 import 'membership_password_input_view.dart';
+import 'package:remedi_kopo/remedi_kopo.dart';
 
 //로그인 뷰에서 사용될 Get X controller.
 class MembershipInformationViewController extends GetxController {
@@ -34,11 +35,15 @@ class MembershipInformationViewController extends GetxController {
   bool addressShow = true;
   bool addressDetailShow = true;
   bool addressSearchShow = true;
+  bool zonecodeShow = true;
   bool sexShow = true;
   bool heightShow = true;
   bool weightShow = true;
   bool birthdayShow = true;
 
+  String isAddress = '';
+  String isAddressDetail = '';
+  String isZonecode = '';
   bool isMale = true;
   String isHeight = '';
   String isWeight = '';
@@ -72,6 +77,11 @@ class MembershipInformationViewController extends GetxController {
     update();
   }
 
+  void zonecodeField(bool zonecodeShow) {
+    this.zonecodeShow = zonecodeShow;
+    update();
+  }
+
   void sexField(bool sexShow) {
     this.sexShow = sexShow;
     update();
@@ -96,6 +106,24 @@ class MembershipInformationViewController extends GetxController {
 
   void _addItem() {
     _key.currentState!.insertItem(0, duration: const Duration(seconds: 1));
+  }
+
+  void applyAddress(String value) {
+    isAddress = value;
+    addressController.text = '${isAddress}';
+    update();
+  }
+
+  void applyAddressDetail(String value) {
+    isAddressDetail = value;
+    addressDetailController.text = '${isAddressDetail}';
+    update();
+  }
+
+  void applyZonecode(String value) {
+    isZonecode = value;
+    addressDetailController.text = ' (우)${isZonecode}';
+    update();
   }
 
   void applySex(bool value) {
@@ -126,7 +154,9 @@ class MembershipInformationViewController extends GetxController {
 
   void AddressFind() {
     Get.dialog(
-      AddressPopupView(),
+      AddressPopupView(
+          applyAddressAtSub: applyAddress,
+          applyAddressDetailAtSub: applyAddressDetail),
       barrierColor: Colors.transparent,
     );
   }
@@ -177,8 +207,8 @@ class MembershipInformationView
             CustomAppBar(
               title: '회원가입',
               isEnglishTitle: false,
-              onLeadingSearch: (){},
-              onLeadingImage: (){},
+              onLeadingSearch: () {},
+              onLeadingImage: () {},
               onLeading: () {
                 //off를 통해 view를 빠져나갈 시 기존 페이지를 dispose
                 Get.off(const MembershipPasswordInputView());
@@ -217,44 +247,43 @@ class MembershipInformationView
             ),
             const SizedBox(height: 90),
             GetBuilder<MembershipInformationViewController>(
-              builder: (controller) {
-                return ButtonWithRollover(
-                  onTap: () {
-                    controller.CompleteFind();
-                  },
-                  backgroundColor: controller.nameShow &&
-                          controller.emailShow &&
-                          controller.callShow &&
-                          controller.addressShow &&
-                          controller.addressDetailShow &&
-                          controller.sexShow &&
-                          controller.heightShow &&
-                          controller.weightShow &&
-                          controller.birthdayShow
-                      ? colorScheme.primary
-                      : colorScheme.onBackground,
-                  child: Center(
-                    child: Text(
-                      '완료',
-                      style: textThemeKo.headlineSmall!.copyWith(
-                        fontWeight: FontWeight.w600,
-                        color: controller.nameShow &&
-                            controller.emailShow &&
-                            controller.callShow &&
-                            controller.addressShow &&
-                            controller.addressDetailShow &&
-                            controller.sexShow &&
-                            controller.heightShow &&
-                            controller.weightShow &&
-                            controller.birthdayShow
-                            ? colorScheme.shadow
-                            : colorScheme.surfaceVariant,
-                      ),
+                builder: (controller) {
+              return ButtonWithRollover(
+                onTap: () {
+                  controller.CompleteFind();
+                },
+                backgroundColor: controller.nameShow &&
+                        controller.emailShow &&
+                        controller.callShow &&
+                        controller.addressShow &&
+                        controller.addressDetailShow &&
+                        controller.sexShow &&
+                        controller.heightShow &&
+                        controller.weightShow &&
+                        controller.birthdayShow
+                    ? colorScheme.primary
+                    : colorScheme.onBackground,
+                child: Center(
+                  child: Text(
+                    '완료',
+                    style: textThemeKo.headlineSmall!.copyWith(
+                      fontWeight: FontWeight.w600,
+                      color: controller.nameShow &&
+                              controller.emailShow &&
+                              controller.callShow &&
+                              controller.addressShow &&
+                              controller.addressDetailShow &&
+                              controller.sexShow &&
+                              controller.heightShow &&
+                              controller.weightShow &&
+                              controller.birthdayShow
+                          ? colorScheme.shadow
+                          : colorScheme.surfaceVariant,
                     ),
                   ),
-                );
-              }
-            ),
+                ),
+              );
+            }),
             const SizedBox(height: 232),
           ],
         ),
@@ -275,7 +304,7 @@ class MembershipInformationView
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '연락처(필수)',
+                      '기본정보(필수)',
                       style: textThemeKo.headlineSmall!.copyWith(
                         fontWeight: FontWeight.w600,
                       ),
@@ -419,8 +448,10 @@ class MembershipInformationView
                 onChanged: (value) {
                   if (value.isNotEmpty) {
                     controller.addressDetailField(true);
+                    controller.zonecodeField(true);
                   } else {
                     controller.addressDetailField(false);
+                    controller.zonecodeField(false);
                   }
                 },
                 controller: controller.addressDetailController,

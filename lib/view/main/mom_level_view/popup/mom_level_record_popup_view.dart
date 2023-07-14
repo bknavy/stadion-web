@@ -4,33 +4,30 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stadion_project/style_config/color_scheme.dart';
-
-import '../../../style_config/text_theme.dart';
-import '../../custom_widget/buttons/button_with_rollover.dart';
-import '../../custom_widget/custom_text.dart';
+import 'package:stadion_project/style_config/text_theme.dart';
+import 'package:stadion_project/view/custom_widget/buttons/button_with_rollover.dart';
+import 'package:stadion_project/view/custom_widget/custom_text.dart';
 
 //로그인 뷰에서 사용될 Get X controller.
-class BirthdayPopupViewController extends GetxController {
-  final List<int> YearSelectedList =
-      List.generate(200, (index) => index + 1900);
-  final List<int> MonthSelectedList = List.generate(12, (index) => index + 1);
-  final List<int> DaySelectedList = List.generate(31, (index) => index + 1);
-  FixedExtentScrollController YearController =
-      FixedExtentScrollController(initialItem: 100);
-  int _selectedYear = 2000;
-  int _selectedMonth = 1;
-  int _selectedDay = 1;
+class MomLevelRecordPopupViewController extends GetxController {
+  final List<int> HourSelectedList = List.generate(24, (index) => index);
+  final List<int> MinuteSelectedList = List.generate(60, (index) => index);
+  final List<int> SecondSelectedList = List.generate(60, (index) => index);
+  final List<int> MillisecondSelectedList = List.generate(10, (index) => index);
+
+  int _selectedHour = 0;
+  int _selectedMinute = 0;
+  int _selectedSecond = 0;
+  int _selectedMillisecond = 0;
 }
 
-class BirthdayPopupView extends GetView<BirthdayPopupViewController> {
-  const BirthdayPopupView({Key? key, required this.applyBirthdayAtSub})
+class MomLevelRecordPopupView extends GetView<MomLevelRecordPopupViewController> {
+  const MomLevelRecordPopupView({Key? key})
       : super(key: key);
-
-  final Function(String, String, String) applyBirthdayAtSub;
 
   @override
   Widget build(BuildContext context) {
-    Get.put(BirthdayPopupViewController());
+    Get.put(MomLevelRecordPopupViewController());
     return AlertDialog(
       insetPadding: EdgeInsets.zero,
       backgroundColor: Colors.transparent,
@@ -46,7 +43,7 @@ class BirthdayPopupView extends GetView<BirthdayPopupViewController> {
               filter: ImageFilter.blur(sigmaX: 30, sigmaY: 30),
               child: Container(
                 width: 662,
-                height: 1032,
+                height: 1091,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
                   color: colorScheme.onSurface.withOpacity(0.1),
@@ -66,7 +63,7 @@ class BirthdayPopupView extends GetView<BirthdayPopupViewController> {
           ///popup 스타일
           Container(
             width: 662,
-            height: 1032,
+            height: 1091,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
               color: Colors.transparent,
@@ -74,17 +71,58 @@ class BirthdayPopupView extends GetView<BirthdayPopupViewController> {
             child: Column(
               children: [
                 SizedBox(height: 100),
-                PopupText(text: '생년월일'),
-                const SizedBox(height: 84),
+                PopupText(text: 'MOVEMENT RECORD'),
+                const SizedBox(height: 83),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    const SizedBox(width: 50),
+                    //const SizedBox(width: 15),
+                    Column(
+                      children: [
+                        PopupText(text: 'H'),
+                        const SizedBox(height: 210),
+                        Container(
+                          width: 160,
+                          height: 2,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              //begin: Alignment(0,0.5),
+                              //end: Alignment(1,0.5),
+                              colors: [
+                                Color(0x00ffffff),
+                                Color(0xff848484),
+                                Color(0x00ffffff)
+                              ],
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 142),
+                        Container(
+                          width: 160,
+                          height: 2,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              //begin: Alignment(0,0.5),
+                              //end: Alignment(1,0.5),
+                              colors: [
+                                Color(0x00ffffff),
+                                Color(0xff848484),
+                                Color(0x00ffffff)
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(width: 13),
                     Column(
                       children: [
                         PopupText(text: 'M'),
-                        const SizedBox(height: 190),
+                        const SizedBox(height: 210),
                         Container(
-                          width: 180,
+                          width: 160,
                           height: 2,
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
@@ -101,7 +139,7 @@ class BirthdayPopupView extends GetView<BirthdayPopupViewController> {
                         ),
                         const SizedBox(height: 142),
                         Container(
-                          width: 180,
+                          width: 160,
                           height: 2,
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
@@ -118,13 +156,13 @@ class BirthdayPopupView extends GetView<BirthdayPopupViewController> {
                         ),
                       ],
                     ),
-                    const SizedBox(width: 11),
+                    const SizedBox(width: 13),
                     Column(
                       children: [
-                        PopupText(text: 'D'),
-                        const SizedBox(height: 190),
+                        PopupText(text: 'S'),
+                        const SizedBox(height: 210),
                         Container(
-                          width: 180,
+                          width: 160,
                           height: 2,
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
@@ -141,7 +179,7 @@ class BirthdayPopupView extends GetView<BirthdayPopupViewController> {
                         ),
                         const SizedBox(height: 142),
                         Container(
-                          width: 180,
+                          width: 160,
                           height: 2,
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
@@ -158,13 +196,19 @@ class BirthdayPopupView extends GetView<BirthdayPopupViewController> {
                         ),
                       ],
                     ),
-                    const SizedBox(width: 11),
                     Column(
                       children: [
-                        PopupText(text: 'Y'),
-                        const SizedBox(height: 190),
+                        const SizedBox(height: 260),
+                        BodyLargeText(text: '.'),
+                      ],
+                    ),
+                    const SizedBox(width: 5),
+                    Column(
+                      children: [
+                        PopupText(text: ''),
+                        const SizedBox(height: 210),
                         Container(
-                          width: 180,
+                          width: 80,
                           height: 2,
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
@@ -181,7 +225,7 @@ class BirthdayPopupView extends GetView<BirthdayPopupViewController> {
                         ),
                         const SizedBox(height: 142),
                         Container(
-                          width: 180,
+                          width: 80,
                           height: 2,
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
@@ -209,24 +253,23 @@ class BirthdayPopupView extends GetView<BirthdayPopupViewController> {
           Positioned(
             child: Row(
               children: [
-                const SizedBox(width: 50),
+                const SizedBox(width: 10),
                 Container(
-                  height: 1030,
-                  width: 180,
+                  height: 1075,
+                  width: 140,
                   child: CupertinoPicker(
-                    //scrollController: controller.MonthController,
                     magnification: 2,
                     squeeze: 0.5,
                     itemExtent: 50,
                     selectionOverlay: null,
                     onSelectedItemChanged: (int selectedItem) {
-                      controller._selectedMonth = selectedItem + 1;
+                      controller._selectedHour = selectedItem;
                     },
                     children: List<Widget>.generate(
-                        controller.MonthSelectedList.length, (int index) {
+                        controller.HourSelectedList.length, (int index) {
                       return Center(
                         child: Text(
-                          controller.MonthSelectedList[index].toString(),
+                          controller.HourSelectedList[index].toString(),
                           style: TextStyle(
                             fontSize: 30,
                             fontWeight: FontWeight.w600,
@@ -236,24 +279,23 @@ class BirthdayPopupView extends GetView<BirthdayPopupViewController> {
                     }),
                   ),
                 ),
-                const SizedBox(width: 11),
+                const SizedBox(width: 37),
                 Container(
-                  height: 1030,
-                  width: 180,
+                  height: 1075,
+                  width: 140,
                   child: CupertinoPicker(
-                    //scrollController: controller.DayController,
                     magnification: 2,
                     squeeze: 0.5,
                     itemExtent: 50,
                     selectionOverlay: null,
                     onSelectedItemChanged: (int selectedItem) {
-                      controller._selectedDay = selectedItem + 1;
+                      controller._selectedMinute = selectedItem;
                     },
                     children: List<Widget>.generate(
-                        controller.DaySelectedList.length, (int index) {
+                        controller.MinuteSelectedList.length, (int index) {
                       return Center(
                         child: Text(
-                          controller.DaySelectedList[index].toString(),
+                          controller.MinuteSelectedList[index].toString(),
                           style: TextStyle(
                             fontSize: 30,
                             fontWeight: FontWeight.w600,
@@ -263,10 +305,10 @@ class BirthdayPopupView extends GetView<BirthdayPopupViewController> {
                     }),
                   ),
                 ),
-                const SizedBox(width: 11),
+                const SizedBox(width: 37),
                 Container(
-                  height: 1030,
-                  width: 180,
+                  height: 1075,
+                  width: 140,
                   child: CupertinoPicker(
                     //scrollController: controller.YearController,
                     magnification: 2,
@@ -274,13 +316,13 @@ class BirthdayPopupView extends GetView<BirthdayPopupViewController> {
                     itemExtent: 50,
                     selectionOverlay: null,
                     onSelectedItemChanged: (int selectedItem) {
-                      controller._selectedYear = selectedItem + 1900;
+                      controller._selectedSecond = selectedItem;
                     },
                     children: List<Widget>.generate(
-                        controller.YearSelectedList.length, (int index) {
+                        controller.SecondSelectedList.length, (int index) {
                       return Center(
                         child: Text(
-                          controller.YearSelectedList[index].toString(),
+                          controller.SecondSelectedList[index].toString(),
                           style: TextStyle(
                             fontSize: 30,
                             fontWeight: FontWeight.w600,
@@ -290,7 +332,33 @@ class BirthdayPopupView extends GetView<BirthdayPopupViewController> {
                     }),
                   ),
                 ),
-                const SizedBox(width: 50),
+                //const SizedBox(width: 37),
+                Container(
+                  height: 1075,
+                  width: 140,
+                  child: CupertinoPicker(
+                    //scrollController: controller.YearController,
+                    magnification: 2,
+                    squeeze: 0.5,
+                    itemExtent: 50,
+                    selectionOverlay: null,
+                    onSelectedItemChanged: (int selectedItem) {
+                      controller._selectedMillisecond = selectedItem;
+                    },
+                    children: List<Widget>.generate(
+                        controller.MillisecondSelectedList.length, (int index) {
+                      return Center(
+                        child: Text(
+                          controller.MillisecondSelectedList[index].toString(),
+                          style: TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      );
+                    }),
+                  ),
+                ),
               ],
             ),
           ),
@@ -298,13 +366,13 @@ class BirthdayPopupView extends GetView<BirthdayPopupViewController> {
           ///저장버튼
           Positioned(
             top: 20,
-            left: 50,
-            right: 50,
+            //left: 50,
+            //right: 50,
             child: Column(
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
+                    SizedBox(width: 592),
                     GestureDetector(
                       onTap: () => Get.back(),
                       child: Container(
@@ -320,9 +388,15 @@ class BirthdayPopupView extends GetView<BirthdayPopupViewController> {
                   ],
                 ),
                 const SizedBox(height: 780),
+                LabelMediumText(
+                  text: '한 번 저장된 기록은 삭제만 가능합니다.',
+                  fontWeight: FontWeight.w400,
+                  letterSpacing: -1.3,
+                ),
+                const SizedBox(height: 30),
                 ButtonWithRollover(
                   onTap: () {
-                    if (controller._selectedYear == 0) {
+                    /*if (controller._selectedYear == 0) {
                       applyBirthdayAtSub(
                           controller._selectedYear.toString(),
                           controller._selectedMonth.toString(),
@@ -332,13 +406,13 @@ class BirthdayPopupView extends GetView<BirthdayPopupViewController> {
                           controller._selectedYear.toString(),
                           controller._selectedMonth.toString(),
                           controller._selectedDay.toString());
-                    }
+                    }*/
                     Get.back();
                   },
                   backgroundColor: colorScheme.background,
                   child: Center(
                     child: Text(
-                      '저장하기',
+                      '선택하기',
                       style: textThemeKo.headlineSmall!.copyWith(
                         fontWeight: FontWeight.w600,
                         color: colorScheme.surfaceVariant,

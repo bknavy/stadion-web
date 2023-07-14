@@ -19,7 +19,7 @@ class TimerCamSettingView extends GetView<TimerCamSettingViewController> {
     return AlertDialog(
       insetPadding: EdgeInsets.zero,
       backgroundColor: Colors.transparent,
-      alignment: const Alignment(0.0, -0.75),
+      alignment: Alignment(0.0, -0.5),
       shadowColor: colorScheme.shadow.withOpacity(0.1),
       content: Stack(
         children: [
@@ -100,8 +100,6 @@ class TimerCamSettingView extends GetView<TimerCamSettingViewController> {
                       children: [
                         ButtonWithRolloverCamera(
                           onTap: () {},
-                          child: Image.asset(
-                              'assets/images/timer_cam_setting_camera_before.png'),
                         ),
                         const SizedBox(height: 20),
                         SizedBox(

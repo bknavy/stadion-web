@@ -18,15 +18,20 @@ class TimerCamAmrapInputViewController extends GetxController {
       '1ROUNG OF EMOM\nTOTAL TIME : 05:00';
 
   final List<int> AmrapSelectedList = List.generate(99, (index) => index + 1);
-  int _selectedAmrap = 0;
+  int _selectedAmrap = 1;
 }
 
 class TimerCamAmrapInputView extends GetView<TimerCamAmrapInputViewController> {
   const TimerCamAmrapInputView(
-      {Key? key, required this.applyAmrapAtSub})
+      {Key? key,
+      required this.applyAmrapAtSub,
+      required this.applyRestMinAtSub,
+      required this.applyMinuteAtSub})
       : super(key: key);
 
   final Function(String) applyAmrapAtSub;
+  final Function(String) applyRestMinAtSub;
+  final Function(String) applyMinuteAtSub;
 
   @override
   Widget build(BuildContext context) {
@@ -121,7 +126,8 @@ class TimerCamAmrapInputView extends GetView<TimerCamAmrapInputViewController> {
                       alignment: Alignment.center,
                       color: Colors.transparent,
                       child: HeadlineSmallText(
-                        text: TimerCamAmrapInputViewController.MainTimerCamView_Amrap_TotalTime,
+                        text: TimerCamAmrapInputViewController
+                            .MainTimerCamView_Amrap_TotalTime,
                         textAlign: TextAlign.center,
                         fontWeight: FontWeight.w600,
                         color: colorScheme.background,
@@ -232,8 +238,12 @@ class TimerCamAmrapInputView extends GetView<TimerCamAmrapInputViewController> {
               onTap: () {
                 if (controller._selectedAmrap == 0) {
                   applyAmrapAtSub(controller._selectedAmrap.toString());
+                  applyRestMinAtSub(controller._selectedAmrap.toString());
+                  applyMinuteAtSub(controller._selectedAmrap.toString());
                 } else {
                   applyAmrapAtSub(controller._selectedAmrap.toString());
+                  applyRestMinAtSub(controller._selectedAmrap.toString());
+                  applyMinuteAtSub(controller._selectedAmrap.toString());
                 }
                 Get.back();
               },

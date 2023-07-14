@@ -11,9 +11,9 @@ import 'package:neon_circular_timer/neon_circular_timer.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 
 //로그인 뷰에서 사용될 Get X controller.
-class TimerCamTabataTimerViewController extends GetxController {
-  static const String MainTimerCamView_Tabata_count = 'SET 1/2\nROUND 1';
-  static const String MainTimerCamView_Tabata_time = '10 MINUTES';
+class TimerCamAmrapTimerViewController extends GetxController {
+  static const String MainTimerCamView_Amrap_count = 'ROUND 1/2';
+  static const String MainTimerCamView_Amrap_time = '10 MINUTES';
 
   final CountDownController TimeController = CountDownController();
 
@@ -32,22 +32,24 @@ class TimerCamTabataTimerViewController extends GetxController {
   }
 }
 
-class TimerCamTabataTimerView extends GetView<TimerCamTabataTimerViewController> {
-  const TimerCamTabataTimerView({Key? key}) : super(key: key);
+class TimerCamAmrapTimerView
+    extends GetView<TimerCamAmrapTimerViewController> {
+  const TimerCamAmrapTimerView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     //뷰에 종속될 Get X controller는 build부에 put을 통해 생성하여 뷰가 dispose될 때 같이 dispose될 수 있도록 함.
     //뷰에 상관없이 유지되어야할 controller는 해당방식처럼 하면 안됨
-    Get.put(TimerCamTabataTimerViewController());
+    Get.put(TimerCamAmrapTimerViewController());
     return Scaffold(
       backgroundColor: colorScheme.background,
-      body: GetBuilder<TimerCamTabataTimerViewController>(builder: (controller) {
+      body:
+      GetBuilder<TimerCamAmrapTimerViewController>(builder: (controller) {
         return Stack(
           children: [
             ///바탕 이미지
             Image.asset(
-              'assets/images/timer_cam_tabata.png',
+              'assets/images/timer_cam.png',
               width: 750,
               height: 1462,
               fit: BoxFit.cover,
@@ -57,7 +59,7 @@ class TimerCamTabataTimerView extends GetView<TimerCamTabataTimerViewController>
               width: 750,
               height: 1462,
               fit: BoxFit.cover,
-              opacity: AlwaysStoppedAnimation(0.2),
+              opacity: AlwaysStoppedAnimation(0.9),
             ),
             Center(
               child: Image.asset(
@@ -98,10 +100,10 @@ class TimerCamTabataTimerView extends GetView<TimerCamTabataTimerViewController>
                           width: 80,
                           height: 80,
                           padding: EdgeInsets.symmetric(vertical: 15),
-                          color: colorScheme.secondary,
+                          color: colorScheme.primary,
                           alignment: Alignment.center,
                           child: TitleSmallText(
-                            text: 'EMOM',
+                            text: 'AMRAP',
                             textAlign: TextAlign.center,
                             fontWeight: FontWeight.w600,
                             color: colorScheme.background,
@@ -113,8 +115,8 @@ class TimerCamTabataTimerView extends GetView<TimerCamTabataTimerViewController>
                           width: 402,
                           height: 80,
                           child: HeadlineSmallText(
-                            text: TimerCamTabataTimerViewController
-                                .MainTimerCamView_Tabata_count,
+                            text: TimerCamAmrapTimerViewController
+                                .MainTimerCamView_Amrap_count,
                             textAlign: TextAlign.end,
                             fontWeight: FontWeight.w600,
                             color: colorScheme.background,
@@ -123,10 +125,26 @@ class TimerCamTabataTimerView extends GetView<TimerCamTabataTimerViewController>
                       ],
                     ),
                     const SizedBox(height: 60),
-                    HeadlineLargeText(
-                      text: TimerCamTabataTimerViewController.MainTimerCamView_Tabata_time,
-                      fontWeight: FontWeight.w600,
-                      color: colorScheme.background,
+                    Row(
+                      children: [
+                        const SizedBox(width: 60),
+                        SizedBox(
+                          width: 442,
+                          child: HeadlineLargeText(
+                            text: TimerCamAmrapTimerViewController
+                                .MainTimerCamView_Amrap_time,
+                            textAlign: TextAlign.center,
+                            fontWeight: FontWeight.w600,
+                            color: colorScheme.background,
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {},
+                          child: Image.asset(
+                            'assets/icons/timer_cam_emom.png',
+                          ),
+                        ),
+                      ],
                     ),
                     const SizedBox(height: 40),
                     GestureDetector(
@@ -147,21 +165,22 @@ class TimerCamTabataTimerView extends GetView<TimerCamTabataTimerViewController>
                               strokeWidth: 23,
                               controller: controller.TimeController,
                               isReverse: true,
-                              isTimerTextShown: controller._isRunning ? true : false,
+                              isTimerTextShown:
+                              controller._isRunning ? true : false,
                               textStyle: textThemeEn.displayMedium!.copyWith(
                                 fontWeight: FontWeight.w600,
-                                color: colorScheme.secondary,
+                                color: colorScheme.primary,
                               ),
                               neumorphicEffect: false,
                               autoStart: false,
                               outerStrokeColor: Colors.transparent,
                               innerFillGradient: LinearGradient(colors: [
-                                colorScheme.secondary,
-                                colorScheme.secondary,
+                                colorScheme.primary,
+                                colorScheme.primary,
                               ]),
                               neonGradient: LinearGradient(colors: [
-                                colorScheme.secondary,
-                                colorScheme.secondary,
+                                colorScheme.primary,
+                                colorScheme.primary,
                               ]),
                               strokeCap: StrokeCap.round,
                             ),
@@ -185,7 +204,7 @@ class TimerCamTabataTimerView extends GetView<TimerCamTabataTimerViewController>
                         ),
                       ),
                     ),
-                    const SizedBox(height: 80),
+                   /* const SizedBox(height: 80),
                     GestureDetector(
                       onTap: () {},
                       child: Image.asset(
@@ -200,23 +219,22 @@ class TimerCamTabataTimerView extends GetView<TimerCamTabataTimerViewController>
                       fontWeight: FontWeight.w600,
                       color: colorScheme.background,
                       letterSpacing: -1.5,
-                    ),
+                    ),*/
                   ],
                 ),
               ),
             ),
             Positioned(
-                child: GestureDetector(
-                  onTap: () {
-                    controller._clickButton();
-                  },
-                  child: Center(
-                    child: controller._isRunning ? null :
-                    Image.asset(
-                      'assets/images/timer_cam_tabata_tap.png'
-                    ),
-                  ),
+              child: GestureDetector(
+                onTap: () {
+                  controller._clickButton();
+                },
+                child: Center(
+                  child: controller._isRunning
+                      ? null
+                      : Image.asset('assets/images/timer_cam_amrap_tap.png'),
                 ),
+              ),
             ),
           ],
         );

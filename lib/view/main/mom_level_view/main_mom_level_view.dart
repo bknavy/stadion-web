@@ -4,6 +4,7 @@ import 'package:stadion_project/style_config/color_scheme.dart';
 import 'package:stadion_project/view/custom_widget/custom_text.dart';
 import 'package:stadion_project/view/custom_widget/view_container/view_container.dart';
 import 'package:stadion_project/view/main/main_menubar_view.dart';
+import 'package:stadion_project/view/main/mom_level_view/mom_level_details_category_view.dart';
 import 'package:stadion_project/view/main/mom_level_view/popup/body_level_description_popup_view.dart';
 
 //로그인 뷰에서 사용될 Get X controller.
@@ -292,6 +293,7 @@ class MainMomLevelView extends GetView<MainMomLevelViewController> {
                   onExpansionChanged: (bool expanded) {
                     controller.expansionTileSelect(expanded);
                   },
+                  backgroundColor: colorScheme.onBackground,
                   collapsedBackgroundColor: colorScheme.onBackground,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
@@ -300,336 +302,344 @@ class MainMomLevelView extends GetView<MainMomLevelViewController> {
                     borderRadius: BorderRadius.circular(12),
                   ),
                   children: [
-                    Row(
-                      children: [
-                        Column(
+                    GestureDetector(
+                      onTap: () {
+                        Get.to(const MomLevelDetailsCategoryView());
+                      },
+                      child: Container(
+                        color: colorScheme.background,
+                        child: Row(
                           children: [
-                            const SizedBox(height: 20),
-                            ///run 1km
-                            ViewContainer(
-                              width: 322,
-                              height: 152,
-                              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 14),
-                              color: colorScheme.onBackground,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: const [
-                                      LabelSmallText(
-                                        text: 'RUN 1KM',
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                      SizedBox(height: 47),
-                                      Text('RECENT',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w300,
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                      LabelSmallText(
-                                        text: MainMomLevelViewController.MianMomLevelView_air_run1km_ExistingRecord,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ],
-                                  ),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
+                            Column(
+                              children: [
+                                const SizedBox(height: 20),
+                                ///run 1km
+                                ViewContainer(
+                                  width: 322,
+                                  height: 152,
+                                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 14),
+                                  color: colorScheme.onBackground,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
-                                      HeadlineSmallText(
-                                        text: MainMomLevelViewController.MianMomLevelView_air_run1km_level,
-                                        fontWeight: FontWeight.w600,
-                                        color: colorScheme.onTertiaryContainer,
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: const [
+                                          LabelSmallText(
+                                            text: 'RUN 1KM',
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                          SizedBox(height: 47),
+                                          Text('RECENT',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w300,
+                                              fontSize: 16,
+                                            ),
+                                          ),
+                                          LabelSmallText(
+                                            text: MainMomLevelViewController.MianMomLevelView_air_run1km_ExistingRecord,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ],
                                       ),
-                                      const SizedBox(height: 5),
-                                      TitleSmallText(
-                                        text: "PR",
-                                        fontWeight: FontWeight.w500,
-                                        color: colorScheme.error,
-                                      ),
-                                      HeadlineLargeText(
-                                        text: MainMomLevelViewController.MianMomLevelView_air_run1km_nowRecord,
-                                        fontWeight: FontWeight.w600,
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                        children: [
+                                          HeadlineSmallText(
+                                            text: MainMomLevelViewController.MianMomLevelView_air_run1km_level,
+                                            fontWeight: FontWeight.w600,
+                                            color: colorScheme.onTertiaryContainer,
+                                          ),
+                                          const SizedBox(height: 5),
+                                          TitleSmallText(
+                                            text: "PR",
+                                            fontWeight: FontWeight.w500,
+                                            color: colorScheme.error,
+                                          ),
+                                          HeadlineLargeText(
+                                            text: MainMomLevelViewController.MianMomLevelView_air_run1km_nowRecord,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ],
                                       ),
                                     ],
                                   ),
-                                ],
-                              ),
+                                ),
+                                const SizedBox(height: 18),
+                                ///bike 1km
+                                ViewContainer(
+                                  width: 322,
+                                  height: 152,
+                                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 14),
+                                  color: colorScheme.onBackground,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: const [
+                                          LabelSmallText(
+                                            text: 'RUN 1KM',
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                          SizedBox(height: 47),
+                                          Text('RECENT',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w300,
+                                              fontSize: 16,
+                                            ),
+                                          ),
+                                          LabelSmallText(
+                                            text: MainMomLevelViewController.MianMomLevelView_air_bike1km_ExistingRecord,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ],
+                                      ),
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                        children: [
+                                          HeadlineSmallText(
+                                            text: MainMomLevelViewController.MianMomLevelView_air_bike1km_level,
+                                            fontWeight: FontWeight.w600,
+                                            color: colorScheme.onTertiaryContainer,
+                                          ),
+                                          const SizedBox(height: 5),
+                                          TitleSmallText(
+                                            text: "PR",
+                                            fontWeight: FontWeight.w500,
+                                            color: colorScheme.error,
+                                          ),
+                                          HeadlineLargeText(
+                                            text: MainMomLevelViewController.MianMomLevelView_air_bike1km_nowRecord,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                const SizedBox(height: 18),
+                                ///jump rope su
+                                ViewContainer(
+                                  width: 322,
+                                  height: 152,
+                                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 14),
+                                  color: colorScheme.onBackground,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: const [
+                                          LabelSmallText(
+                                            text: 'RUN 1KM',
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                          SizedBox(height: 47),
+                                          Text('RECENT',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w300,
+                                              fontSize: 16,
+                                            ),
+                                          ),
+                                          LabelSmallText(
+                                            text: MainMomLevelViewController.MianMomLevelView_air_jumpSu_ExistingRecord,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ],
+                                      ),
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                        children: [
+                                          HeadlineSmallText(
+                                            text: MainMomLevelViewController.MianMomLevelView_air_jumpSu_level,
+                                            fontWeight: FontWeight.w600,
+                                            color: colorScheme.onTertiaryContainer,
+                                          ),
+                                          const SizedBox(height: 5),
+                                          TitleSmallText(
+                                            text: "PR",
+                                            fontWeight: FontWeight.w500,
+                                            color: colorScheme.error,
+                                          ),
+                                          HeadlineLargeText(
+                                            text: MainMomLevelViewController.MianMomLevelView_air_jumpSu_nowRecord,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ),
-                            const SizedBox(height: 18),
-                            ///bike 1km
-                            ViewContainer(
-                              width: 322,
-                              height: 152,
-                              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 14),
-                              color: colorScheme.onBackground,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: const [
-                                      LabelSmallText(
-                                        text: 'RUN 1KM',
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                      SizedBox(height: 47),
-                                      Text('RECENT',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w300,
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                      LabelSmallText(
-                                        text: MainMomLevelViewController.MianMomLevelView_air_bike1km_ExistingRecord,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ],
-                                  ),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
+                            const SizedBox(width: 18),
+                            Column(
+                              children: [
+                                const SizedBox(height: 20),
+                                ///run 5km
+                                ViewContainer(
+                                  width: 322,
+                                  height: 152,
+                                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 14),
+                                  color: colorScheme.onBackground,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
-                                      HeadlineSmallText(
-                                        text: MainMomLevelViewController.MianMomLevelView_air_bike1km_level,
-                                        fontWeight: FontWeight.w600,
-                                        color: colorScheme.onTertiaryContainer,
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: const [
+                                          LabelSmallText(
+                                            text: 'RUN 1KM',
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                          SizedBox(height: 47),
+                                          Text('RECENT',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w300,
+                                              fontSize: 16,
+                                            ),
+                                          ),
+                                          LabelSmallText(
+                                            text: MainMomLevelViewController.MianMomLevelView_air_run5km_ExistingRecord,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ],
                                       ),
-                                      const SizedBox(height: 5),
-                                      TitleSmallText(
-                                        text: "PR",
-                                        fontWeight: FontWeight.w500,
-                                        color: colorScheme.error,
-                                      ),
-                                      HeadlineLargeText(
-                                        text: MainMomLevelViewController.MianMomLevelView_air_bike1km_nowRecord,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                            const SizedBox(height: 18),
-                            ///jump rope su
-                            ViewContainer(
-                              width: 322,
-                              height: 152,
-                              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 14),
-                              color: colorScheme.onBackground,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: const [
-                                      LabelSmallText(
-                                        text: 'RUN 1KM',
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                      SizedBox(height: 47),
-                                      Text('RECENT',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w300,
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                      LabelSmallText(
-                                        text: MainMomLevelViewController.MianMomLevelView_air_jumpSu_ExistingRecord,
-                                        fontWeight: FontWeight.w600,
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                        children: [
+                                          HeadlineSmallText(
+                                            text: MainMomLevelViewController.MianMomLevelView_air_run5km_level,
+                                            fontWeight: FontWeight.w600,
+                                            color: colorScheme.onTertiaryContainer,
+                                          ),
+                                          const SizedBox(height: 5),
+                                          TitleSmallText(
+                                            text: "PR",
+                                            fontWeight: FontWeight.w500,
+                                            color: colorScheme.error,
+                                          ),
+                                          HeadlineLargeText(
+                                            text: MainMomLevelViewController.MianMomLevelView_air_run5km_nowRecord,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ],
                                       ),
                                     ],
                                   ),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                ),
+                                const SizedBox(height: 18),
+                                ///bike 5km
+                                ViewContainer(
+                                  width: 322,
+                                  height: 152,
+                                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 14),
+                                  color: colorScheme.onBackground,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
-                                      HeadlineSmallText(
-                                        text: MainMomLevelViewController.MianMomLevelView_air_jumpSu_level,
-                                        fontWeight: FontWeight.w600,
-                                        color: colorScheme.onTertiaryContainer,
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: const [
+                                          LabelSmallText(
+                                            text: 'RUN 1KM',
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                          SizedBox(height: 47),
+                                          Text('RECENT',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w300,
+                                              fontSize: 16,
+                                            ),
+                                          ),
+                                          LabelSmallText(
+                                            text: MainMomLevelViewController.MianMomLevelView_air_bike5km_ExistingRecord,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ],
                                       ),
-                                      const SizedBox(height: 5),
-                                      TitleSmallText(
-                                        text: "PR",
-                                        fontWeight: FontWeight.w500,
-                                        color: colorScheme.error,
-                                      ),
-                                      HeadlineLargeText(
-                                        text: MainMomLevelViewController.MianMomLevelView_air_jumpSu_nowRecord,
-                                        fontWeight: FontWeight.w600,
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                        children: [
+                                          HeadlineSmallText(
+                                            text: MainMomLevelViewController.MianMomLevelView_air_bike5km_level,
+                                            fontWeight: FontWeight.w600,
+                                            color: colorScheme.onTertiaryContainer,
+                                          ),
+                                          const SizedBox(height: 5),
+                                          TitleSmallText(
+                                            text: "PR",
+                                            fontWeight: FontWeight.w500,
+                                            color: colorScheme.error,
+                                          ),
+                                          HeadlineLargeText(
+                                            text: MainMomLevelViewController.MianMomLevelView_air_bike5km_nowRecord,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ],
                                       ),
                                     ],
                                   ),
-                                ],
-                              ),
+                                ),
+                                const SizedBox(height: 18),
+                                ///jump rope du
+                                ViewContainer(
+                                  width: 322,
+                                  height: 152,
+                                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 14),
+                                  color: colorScheme.onBackground,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: const [
+                                          LabelSmallText(
+                                            text: 'RUN 1KM',
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                          SizedBox(height: 47),
+                                          Text('RECENT',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w300,
+                                              fontSize: 16,
+                                            ),
+                                          ),
+                                          LabelSmallText(
+                                            text: MainMomLevelViewController.MianMomLevelView_air_jumpDu_ExistingRecord,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ],
+                                      ),
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                        children: [
+                                          HeadlineSmallText(
+                                            text: MainMomLevelViewController.MianMomLevelView_air_jumpDu_level,
+                                            fontWeight: FontWeight.w600,
+                                            color: colorScheme.onTertiaryContainer,
+                                          ),
+                                          const SizedBox(height: 5),
+                                          TitleSmallText(
+                                            text: "PR",
+                                            fontWeight: FontWeight.w500,
+                                            color: colorScheme.error,
+                                          ),
+                                          HeadlineLargeText(
+                                            text: MainMomLevelViewController.MianMomLevelView_air_jumpDu_nowRecord,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
                         ),
-                        const SizedBox(width: 18),
-                        Column(
-                          children: [
-                            const SizedBox(height: 20),
-                            ///run 5km
-                            ViewContainer(
-                              width: 322,
-                              height: 152,
-                              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 14),
-                              color: colorScheme.onBackground,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: const [
-                                      LabelSmallText(
-                                        text: 'RUN 1KM',
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                      SizedBox(height: 47),
-                                      Text('RECENT',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w300,
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                      LabelSmallText(
-                                        text: MainMomLevelViewController.MianMomLevelView_air_run5km_ExistingRecord,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ],
-                                  ),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      HeadlineSmallText(
-                                        text: MainMomLevelViewController.MianMomLevelView_air_run5km_level,
-                                        fontWeight: FontWeight.w600,
-                                        color: colorScheme.onTertiaryContainer,
-                                      ),
-                                      const SizedBox(height: 5),
-                                      TitleSmallText(
-                                        text: "PR",
-                                        fontWeight: FontWeight.w500,
-                                        color: colorScheme.error,
-                                      ),
-                                      HeadlineLargeText(
-                                        text: MainMomLevelViewController.MianMomLevelView_air_run5km_nowRecord,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                            const SizedBox(height: 18),
-                            ///bike 5km
-                            ViewContainer(
-                              width: 322,
-                              height: 152,
-                              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 14),
-                              color: colorScheme.onBackground,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: const [
-                                      LabelSmallText(
-                                        text: 'RUN 1KM',
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                      SizedBox(height: 47),
-                                      Text('RECENT',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w300,
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                      LabelSmallText(
-                                        text: MainMomLevelViewController.MianMomLevelView_air_bike5km_ExistingRecord,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ],
-                                  ),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      HeadlineSmallText(
-                                        text: MainMomLevelViewController.MianMomLevelView_air_bike5km_level,
-                                        fontWeight: FontWeight.w600,
-                                        color: colorScheme.onTertiaryContainer,
-                                      ),
-                                      const SizedBox(height: 5),
-                                      TitleSmallText(
-                                        text: "PR",
-                                        fontWeight: FontWeight.w500,
-                                        color: colorScheme.error,
-                                      ),
-                                      HeadlineLargeText(
-                                        text: MainMomLevelViewController.MianMomLevelView_air_bike5km_nowRecord,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                            const SizedBox(height: 18),
-                            ///jump rope du
-                            ViewContainer(
-                              width: 322,
-                              height: 152,
-                              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 14),
-                              color: colorScheme.onBackground,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: const [
-                                      LabelSmallText(
-                                        text: 'RUN 1KM',
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                      SizedBox(height: 47),
-                                      Text('RECENT',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w300,
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                      LabelSmallText(
-                                        text: MainMomLevelViewController.MianMomLevelView_air_jumpDu_ExistingRecord,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ],
-                                  ),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      HeadlineSmallText(
-                                        text: MainMomLevelViewController.MianMomLevelView_air_jumpDu_level,
-                                        fontWeight: FontWeight.w600,
-                                        color: colorScheme.onTertiaryContainer,
-                                      ),
-                                      const SizedBox(height: 5),
-                                      TitleSmallText(
-                                        text: "PR",
-                                        fontWeight: FontWeight.w500,
-                                        color: colorScheme.error,
-                                      ),
-                                      HeadlineLargeText(
-                                        text: MainMomLevelViewController.MianMomLevelView_air_jumpDu_nowRecord,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
+                      ),
                     ),
                   ],
                 ),
@@ -674,6 +684,7 @@ class MainMomLevelView extends GetView<MainMomLevelViewController> {
                   onExpansionChanged: (bool expanded) {
                     controller.expansionTileSelect(expanded);
                   },
+                  backgroundColor: colorScheme.onBackground,
                   collapsedBackgroundColor: colorScheme.onBackground,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
@@ -682,336 +693,344 @@ class MainMomLevelView extends GetView<MainMomLevelViewController> {
                     borderRadius: BorderRadius.circular(12),
                   ),
                   children: [
-                    Row(
-                      children: [
-                        Column(
+                    GestureDetector(
+                      onTap: () {
+                        Get.to(const MomLevelDetailsCategoryView());
+                      },
+                      child: Container(
+                        color: colorScheme.background,
+                        child: Row(
                           children: [
-                            const SizedBox(height: 20),
-                            ///run 1km
-                            ViewContainer(
-                              width: 322,
-                              height: 152,
-                              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 14),
-                              color: colorScheme.onBackground,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: const [
-                                      LabelSmallText(
-                                        text: 'RUN 1KM',
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                      SizedBox(height: 47),
-                                      Text('RECENT',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w300,
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                      LabelSmallText(
-                                        text: MainMomLevelViewController.MianMomLevelView_force_run1km_ExistingRecord,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ],
-                                  ),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
+                            Column(
+                              children: [
+                                const SizedBox(height: 20),
+                                ///run 1km
+                                ViewContainer(
+                                  width: 322,
+                                  height: 152,
+                                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 14),
+                                  color: colorScheme.onBackground,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
-                                      HeadlineSmallText(
-                                        text: MainMomLevelViewController.MianMomLevelView_force_run1km_level,
-                                        fontWeight: FontWeight.w600,
-                                        color: colorScheme.onTertiaryContainer,
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: const [
+                                          LabelSmallText(
+                                            text: 'RUN 1KM',
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                          SizedBox(height: 47),
+                                          Text('RECENT',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w300,
+                                              fontSize: 16,
+                                            ),
+                                          ),
+                                          LabelSmallText(
+                                            text: MainMomLevelViewController.MianMomLevelView_force_run1km_ExistingRecord,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ],
                                       ),
-                                      const SizedBox(height: 5),
-                                      TitleSmallText(
-                                        text: "PR",
-                                        fontWeight: FontWeight.w500,
-                                        color: colorScheme.error,
-                                      ),
-                                      HeadlineLargeText(
-                                        text: MainMomLevelViewController.MianMomLevelView_force_run1km_nowRecord,
-                                        fontWeight: FontWeight.w600,
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                        children: [
+                                          HeadlineSmallText(
+                                            text: MainMomLevelViewController.MianMomLevelView_force_run1km_level,
+                                            fontWeight: FontWeight.w600,
+                                            color: colorScheme.onTertiaryContainer,
+                                          ),
+                                          const SizedBox(height: 5),
+                                          TitleSmallText(
+                                            text: "PR",
+                                            fontWeight: FontWeight.w500,
+                                            color: colorScheme.error,
+                                          ),
+                                          HeadlineLargeText(
+                                            text: MainMomLevelViewController.MianMomLevelView_force_run1km_nowRecord,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ],
                                       ),
                                     ],
                                   ),
-                                ],
-                              ),
+                                ),
+                                const SizedBox(height: 18),
+                                ///bike 1km
+                                ViewContainer(
+                                  width: 322,
+                                  height: 152,
+                                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 14),
+                                  color: colorScheme.onBackground,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: const [
+                                          LabelSmallText(
+                                            text: 'RUN 1KM',
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                          SizedBox(height: 47),
+                                          Text('RECENT',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w300,
+                                              fontSize: 16,
+                                            ),
+                                          ),
+                                          LabelSmallText(
+                                            text: MainMomLevelViewController.MianMomLevelView_force_bike1km_ExistingRecord,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ],
+                                      ),
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                        children: [
+                                          HeadlineSmallText(
+                                            text: MainMomLevelViewController.MianMomLevelView_force_bike1km_level,
+                                            fontWeight: FontWeight.w600,
+                                            color: colorScheme.onTertiaryContainer,
+                                          ),
+                                          const SizedBox(height: 5),
+                                          TitleSmallText(
+                                            text: "PR",
+                                            fontWeight: FontWeight.w500,
+                                            color: colorScheme.error,
+                                          ),
+                                          HeadlineLargeText(
+                                            text: MainMomLevelViewController.MianMomLevelView_force_bike1km_nowRecord,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                const SizedBox(height: 18),
+                                ///jump rope su
+                                ViewContainer(
+                                  width: 322,
+                                  height: 152,
+                                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 14),
+                                  color: colorScheme.onBackground,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: const [
+                                          LabelSmallText(
+                                            text: 'RUN 1KM',
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                          SizedBox(height: 47),
+                                          Text('RECENT',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w300,
+                                              fontSize: 16,
+                                            ),
+                                          ),
+                                          LabelSmallText(
+                                            text: MainMomLevelViewController.MianMomLevelView_force_jumpSu_ExistingRecord,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ],
+                                      ),
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                        children: [
+                                          HeadlineSmallText(
+                                            text: MainMomLevelViewController.MianMomLevelView_force_jumpSu_level,
+                                            fontWeight: FontWeight.w600,
+                                            color: colorScheme.onTertiaryContainer,
+                                          ),
+                                          const SizedBox(height: 5),
+                                          TitleSmallText(
+                                            text: "PR",
+                                            fontWeight: FontWeight.w500,
+                                            color: colorScheme.error,
+                                          ),
+                                          HeadlineLargeText(
+                                            text: MainMomLevelViewController.MianMomLevelView_air_jumpSu_nowRecord,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ),
-                            const SizedBox(height: 18),
-                            ///bike 1km
-                            ViewContainer(
-                              width: 322,
-                              height: 152,
-                              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 14),
-                              color: colorScheme.onBackground,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: const [
-                                      LabelSmallText(
-                                        text: 'RUN 1KM',
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                      SizedBox(height: 47),
-                                      Text('RECENT',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w300,
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                      LabelSmallText(
-                                        text: MainMomLevelViewController.MianMomLevelView_force_bike1km_ExistingRecord,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ],
-                                  ),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
+                            const SizedBox(width: 18),
+                            Column(
+                              children: [
+                                const SizedBox(height: 20),
+                                ///run 5km
+                                ViewContainer(
+                                  width: 322,
+                                  height: 152,
+                                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 14),
+                                  color: colorScheme.onBackground,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
-                                      HeadlineSmallText(
-                                        text: MainMomLevelViewController.MianMomLevelView_force_bike1km_level,
-                                        fontWeight: FontWeight.w600,
-                                        color: colorScheme.onTertiaryContainer,
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: const [
+                                          LabelSmallText(
+                                            text: 'RUN 1KM',
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                          SizedBox(height: 47),
+                                          Text('RECENT',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w300,
+                                              fontSize: 16,
+                                            ),
+                                          ),
+                                          LabelSmallText(
+                                            text: MainMomLevelViewController.MianMomLevelView_force_run5km_ExistingRecord,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ],
                                       ),
-                                      const SizedBox(height: 5),
-                                      TitleSmallText(
-                                        text: "PR",
-                                        fontWeight: FontWeight.w500,
-                                        color: colorScheme.error,
-                                      ),
-                                      HeadlineLargeText(
-                                        text: MainMomLevelViewController.MianMomLevelView_force_bike1km_nowRecord,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                            const SizedBox(height: 18),
-                            ///jump rope su
-                            ViewContainer(
-                              width: 322,
-                              height: 152,
-                              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 14),
-                              color: colorScheme.onBackground,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: const [
-                                      LabelSmallText(
-                                        text: 'RUN 1KM',
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                      SizedBox(height: 47),
-                                      Text('RECENT',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w300,
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                      LabelSmallText(
-                                        text: MainMomLevelViewController.MianMomLevelView_force_jumpSu_ExistingRecord,
-                                        fontWeight: FontWeight.w600,
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                        children: [
+                                          HeadlineSmallText(
+                                            text: MainMomLevelViewController.MianMomLevelView_force_run5km_level,
+                                            fontWeight: FontWeight.w600,
+                                            color: colorScheme.onTertiaryContainer,
+                                          ),
+                                          const SizedBox(height: 5),
+                                          TitleSmallText(
+                                            text: "PR",
+                                            fontWeight: FontWeight.w500,
+                                            color: colorScheme.error,
+                                          ),
+                                          HeadlineLargeText(
+                                            text: MainMomLevelViewController.MianMomLevelView_air_run5km_nowRecord,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ],
                                       ),
                                     ],
                                   ),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                ),
+                                const SizedBox(height: 18),
+                                ///bike 5km
+                                ViewContainer(
+                                  width: 322,
+                                  height: 152,
+                                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 14),
+                                  color: colorScheme.onBackground,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
-                                      HeadlineSmallText(
-                                        text: MainMomLevelViewController.MianMomLevelView_force_jumpSu_level,
-                                        fontWeight: FontWeight.w600,
-                                        color: colorScheme.onTertiaryContainer,
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: const [
+                                          LabelSmallText(
+                                            text: 'RUN 1KM',
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                          SizedBox(height: 47),
+                                          Text('RECENT',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w300,
+                                              fontSize: 16,
+                                            ),
+                                          ),
+                                          LabelSmallText(
+                                            text: MainMomLevelViewController.MianMomLevelView_force_bike5km_ExistingRecord,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ],
                                       ),
-                                      const SizedBox(height: 5),
-                                      TitleSmallText(
-                                        text: "PR",
-                                        fontWeight: FontWeight.w500,
-                                        color: colorScheme.error,
-                                      ),
-                                      HeadlineLargeText(
-                                        text: MainMomLevelViewController.MianMomLevelView_air_jumpSu_nowRecord,
-                                        fontWeight: FontWeight.w600,
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                        children: [
+                                          HeadlineSmallText(
+                                            text: MainMomLevelViewController.MianMomLevelView_force_bike5km_level,
+                                            fontWeight: FontWeight.w600,
+                                            color: colorScheme.onTertiaryContainer,
+                                          ),
+                                          const SizedBox(height: 5),
+                                          TitleSmallText(
+                                            text: "PR",
+                                            fontWeight: FontWeight.w500,
+                                            color: colorScheme.error,
+                                          ),
+                                          HeadlineLargeText(
+                                            text: MainMomLevelViewController.MianMomLevelView_air_bike5km_nowRecord,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ],
                                       ),
                                     ],
                                   ),
-                                ],
-                              ),
+                                ),
+                                const SizedBox(height: 18),
+                                ///jump rope du
+                                ViewContainer(
+                                  width: 322,
+                                  height: 152,
+                                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 14),
+                                  color: colorScheme.onBackground,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: const [
+                                          LabelSmallText(
+                                            text: 'RUN 1KM',
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                          SizedBox(height: 47),
+                                          Text('RECENT',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w300,
+                                              fontSize: 16,
+                                            ),
+                                          ),
+                                          LabelSmallText(
+                                            text: MainMomLevelViewController.MianMomLevelView_force_jumpDu_ExistingRecord,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ],
+                                      ),
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                        children: [
+                                          HeadlineSmallText(
+                                            text: MainMomLevelViewController.MianMomLevelView_force_jumpDu_level,
+                                            fontWeight: FontWeight.w600,
+                                            color: colorScheme.onTertiaryContainer,
+                                          ),
+                                          const SizedBox(height: 5),
+                                          TitleSmallText(
+                                            text: "PR",
+                                            fontWeight: FontWeight.w500,
+                                            color: colorScheme.error,
+                                          ),
+                                          HeadlineLargeText(
+                                            text: MainMomLevelViewController.MianMomLevelView_air_jumpDu_nowRecord,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
                         ),
-                        const SizedBox(width: 18),
-                        Column(
-                          children: [
-                            const SizedBox(height: 20),
-                            ///run 5km
-                            ViewContainer(
-                              width: 322,
-                              height: 152,
-                              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 14),
-                              color: colorScheme.onBackground,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: const [
-                                      LabelSmallText(
-                                        text: 'RUN 1KM',
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                      SizedBox(height: 47),
-                                      Text('RECENT',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w300,
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                      LabelSmallText(
-                                        text: MainMomLevelViewController.MianMomLevelView_force_run5km_ExistingRecord,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ],
-                                  ),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      HeadlineSmallText(
-                                        text: MainMomLevelViewController.MianMomLevelView_force_run5km_level,
-                                        fontWeight: FontWeight.w600,
-                                        color: colorScheme.onTertiaryContainer,
-                                      ),
-                                      const SizedBox(height: 5),
-                                      TitleSmallText(
-                                        text: "PR",
-                                        fontWeight: FontWeight.w500,
-                                        color: colorScheme.error,
-                                      ),
-                                      HeadlineLargeText(
-                                        text: MainMomLevelViewController.MianMomLevelView_air_run5km_nowRecord,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                            const SizedBox(height: 18),
-                            ///bike 5km
-                            ViewContainer(
-                              width: 322,
-                              height: 152,
-                              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 14),
-                              color: colorScheme.onBackground,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: const [
-                                      LabelSmallText(
-                                        text: 'RUN 1KM',
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                      SizedBox(height: 47),
-                                      Text('RECENT',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w300,
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                      LabelSmallText(
-                                        text: MainMomLevelViewController.MianMomLevelView_force_bike5km_ExistingRecord,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ],
-                                  ),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      HeadlineSmallText(
-                                        text: MainMomLevelViewController.MianMomLevelView_force_bike5km_level,
-                                        fontWeight: FontWeight.w600,
-                                        color: colorScheme.onTertiaryContainer,
-                                      ),
-                                      const SizedBox(height: 5),
-                                      TitleSmallText(
-                                        text: "PR",
-                                        fontWeight: FontWeight.w500,
-                                        color: colorScheme.error,
-                                      ),
-                                      HeadlineLargeText(
-                                        text: MainMomLevelViewController.MianMomLevelView_air_bike5km_nowRecord,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                            const SizedBox(height: 18),
-                            ///jump rope du
-                            ViewContainer(
-                              width: 322,
-                              height: 152,
-                              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 14),
-                              color: colorScheme.onBackground,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: const [
-                                      LabelSmallText(
-                                        text: 'RUN 1KM',
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                      SizedBox(height: 47),
-                                      Text('RECENT',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w300,
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                      LabelSmallText(
-                                        text: MainMomLevelViewController.MianMomLevelView_force_jumpDu_ExistingRecord,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ],
-                                  ),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      HeadlineSmallText(
-                                        text: MainMomLevelViewController.MianMomLevelView_force_jumpDu_level,
-                                        fontWeight: FontWeight.w600,
-                                        color: colorScheme.onTertiaryContainer,
-                                      ),
-                                      const SizedBox(height: 5),
-                                      TitleSmallText(
-                                        text: "PR",
-                                        fontWeight: FontWeight.w500,
-                                        color: colorScheme.error,
-                                      ),
-                                      HeadlineLargeText(
-                                        text: MainMomLevelViewController.MianMomLevelView_air_jumpDu_nowRecord,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
+                      ),
                     ),
                   ],
                 ),
@@ -1056,6 +1075,7 @@ class MainMomLevelView extends GetView<MainMomLevelViewController> {
                   onExpansionChanged: (bool expanded) {
                     controller.expansionTileSelect(expanded);
                   },
+                  backgroundColor: colorScheme.onBackground,
                   collapsedBackgroundColor: colorScheme.onBackground,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
@@ -1064,336 +1084,344 @@ class MainMomLevelView extends GetView<MainMomLevelViewController> {
                     borderRadius: BorderRadius.circular(12),
                   ),
                   children: [
-                    Row(
-                      children: [
-                        Column(
+                    GestureDetector(
+                      onTap: () {
+                        Get.to(const MomLevelDetailsCategoryView());
+                      },
+                      child: Container(
+                        color: colorScheme.background,
+                        child: Row(
                           children: [
-                            const SizedBox(height: 20),
-                            ///run 1km
-                            ViewContainer(
-                              width: 322,
-                              height: 152,
-                              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 14),
-                              color: colorScheme.onBackground,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: const [
-                                      LabelSmallText(
-                                        text: 'RUN 1KM',
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                      SizedBox(height: 47),
-                                      Text('RECENT',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w300,
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                      LabelSmallText(
-                                        text: MainMomLevelViewController.MianMomLevelView_fly_run1km_ExistingRecord,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ],
-                                  ),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
+                            Column(
+                              children: [
+                                const SizedBox(height: 20),
+                                ///run 1km
+                                ViewContainer(
+                                  width: 322,
+                                  height: 152,
+                                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 14),
+                                  color: colorScheme.onBackground,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
-                                      HeadlineSmallText(
-                                        text: MainMomLevelViewController.MianMomLevelView_fly_run1km_level,
-                                        fontWeight: FontWeight.w600,
-                                        color: colorScheme.onTertiaryContainer,
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: const [
+                                          LabelSmallText(
+                                            text: 'RUN 1KM',
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                          SizedBox(height: 47),
+                                          Text('RECENT',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w300,
+                                              fontSize: 16,
+                                            ),
+                                          ),
+                                          LabelSmallText(
+                                            text: MainMomLevelViewController.MianMomLevelView_fly_run1km_ExistingRecord,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ],
                                       ),
-                                      const SizedBox(height: 5),
-                                      TitleSmallText(
-                                        text: "PR",
-                                        fontWeight: FontWeight.w500,
-                                        color: colorScheme.error,
-                                      ),
-                                      HeadlineLargeText(
-                                        text: MainMomLevelViewController.MianMomLevelView_fly_run1km_nowRecord,
-                                        fontWeight: FontWeight.w600,
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                        children: [
+                                          HeadlineSmallText(
+                                            text: MainMomLevelViewController.MianMomLevelView_fly_run1km_level,
+                                            fontWeight: FontWeight.w600,
+                                            color: colorScheme.onTertiaryContainer,
+                                          ),
+                                          const SizedBox(height: 5),
+                                          TitleSmallText(
+                                            text: "PR",
+                                            fontWeight: FontWeight.w500,
+                                            color: colorScheme.error,
+                                          ),
+                                          HeadlineLargeText(
+                                            text: MainMomLevelViewController.MianMomLevelView_fly_run1km_nowRecord,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ],
                                       ),
                                     ],
                                   ),
-                                ],
-                              ),
+                                ),
+                                const SizedBox(height: 18),
+                                ///bike 1km
+                                ViewContainer(
+                                  width: 322,
+                                  height: 152,
+                                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 14),
+                                  color: colorScheme.onBackground,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: const [
+                                          LabelSmallText(
+                                            text: 'RUN 1KM',
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                          SizedBox(height: 47),
+                                          Text('RECENT',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w300,
+                                              fontSize: 16,
+                                            ),
+                                          ),
+                                          LabelSmallText(
+                                            text: MainMomLevelViewController.MianMomLevelView_fly_bike1km_ExistingRecord,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ],
+                                      ),
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                        children: [
+                                          HeadlineSmallText(
+                                            text: MainMomLevelViewController.MianMomLevelView_fly_bike1km_level,
+                                            fontWeight: FontWeight.w600,
+                                            color: colorScheme.onTertiaryContainer,
+                                          ),
+                                          const SizedBox(height: 5),
+                                          TitleSmallText(
+                                            text: "PR",
+                                            fontWeight: FontWeight.w500,
+                                            color: colorScheme.error,
+                                          ),
+                                          HeadlineLargeText(
+                                            text: MainMomLevelViewController.MianMomLevelView_fly_bike1km_nowRecord,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                const SizedBox(height: 18),
+                                ///jump rope su
+                                ViewContainer(
+                                  width: 322,
+                                  height: 152,
+                                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 14),
+                                  color: colorScheme.onBackground,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: const [
+                                          LabelSmallText(
+                                            text: 'RUN 1KM',
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                          SizedBox(height: 47),
+                                          Text('RECENT',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w300,
+                                              fontSize: 16,
+                                            ),
+                                          ),
+                                          LabelSmallText(
+                                            text: MainMomLevelViewController.MianMomLevelView_fly_jumpSu_ExistingRecord,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ],
+                                      ),
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                        children: [
+                                          HeadlineSmallText(
+                                            text: MainMomLevelViewController.MianMomLevelView_fly_jumpSu_level,
+                                            fontWeight: FontWeight.w600,
+                                            color: colorScheme.onTertiaryContainer,
+                                          ),
+                                          const SizedBox(height: 5),
+                                          TitleSmallText(
+                                            text: "PR",
+                                            fontWeight: FontWeight.w500,
+                                            color: colorScheme.error,
+                                          ),
+                                          HeadlineLargeText(
+                                            text: MainMomLevelViewController.MianMomLevelView_fly_jumpSu_nowRecord,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ),
-                            const SizedBox(height: 18),
-                            ///bike 1km
-                            ViewContainer(
-                              width: 322,
-                              height: 152,
-                              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 14),
-                              color: colorScheme.onBackground,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: const [
-                                      LabelSmallText(
-                                        text: 'RUN 1KM',
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                      SizedBox(height: 47),
-                                      Text('RECENT',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w300,
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                      LabelSmallText(
-                                        text: MainMomLevelViewController.MianMomLevelView_fly_bike1km_ExistingRecord,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ],
-                                  ),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
+                            const SizedBox(width: 18),
+                            Column(
+                              children: [
+                                const SizedBox(height: 20),
+                                ///run 5km
+                                ViewContainer(
+                                  width: 322,
+                                  height: 152,
+                                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 14),
+                                  color: colorScheme.onBackground,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
-                                      HeadlineSmallText(
-                                        text: MainMomLevelViewController.MianMomLevelView_fly_bike1km_level,
-                                        fontWeight: FontWeight.w600,
-                                        color: colorScheme.onTertiaryContainer,
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: const [
+                                          LabelSmallText(
+                                            text: 'RUN 1KM',
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                          SizedBox(height: 47),
+                                          Text('RECENT',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w300,
+                                              fontSize: 16,
+                                            ),
+                                          ),
+                                          LabelSmallText(
+                                            text: MainMomLevelViewController.MianMomLevelView_fly_run5km_ExistingRecord,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ],
                                       ),
-                                      const SizedBox(height: 5),
-                                      TitleSmallText(
-                                        text: "PR",
-                                        fontWeight: FontWeight.w500,
-                                        color: colorScheme.error,
-                                      ),
-                                      HeadlineLargeText(
-                                        text: MainMomLevelViewController.MianMomLevelView_fly_bike1km_nowRecord,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                            const SizedBox(height: 18),
-                            ///jump rope su
-                            ViewContainer(
-                              width: 322,
-                              height: 152,
-                              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 14),
-                              color: colorScheme.onBackground,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: const [
-                                      LabelSmallText(
-                                        text: 'RUN 1KM',
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                      SizedBox(height: 47),
-                                      Text('RECENT',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w300,
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                      LabelSmallText(
-                                        text: MainMomLevelViewController.MianMomLevelView_fly_jumpSu_ExistingRecord,
-                                        fontWeight: FontWeight.w600,
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                        children: [
+                                          HeadlineSmallText(
+                                            text: MainMomLevelViewController.MianMomLevelView_fly_run5km_level,
+                                            fontWeight: FontWeight.w600,
+                                            color: colorScheme.onTertiaryContainer,
+                                          ),
+                                          const SizedBox(height: 5),
+                                          TitleSmallText(
+                                            text: "PR",
+                                            fontWeight: FontWeight.w500,
+                                            color: colorScheme.error,
+                                          ),
+                                          HeadlineLargeText(
+                                            text: MainMomLevelViewController.MianMomLevelView_fly_run5km_nowRecord,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ],
                                       ),
                                     ],
                                   ),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                ),
+                                const SizedBox(height: 18),
+                                ///bike 5km
+                                ViewContainer(
+                                  width: 322,
+                                  height: 152,
+                                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 14),
+                                  color: colorScheme.onBackground,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
-                                      HeadlineSmallText(
-                                        text: MainMomLevelViewController.MianMomLevelView_fly_jumpSu_level,
-                                        fontWeight: FontWeight.w600,
-                                        color: colorScheme.onTertiaryContainer,
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: const [
+                                          LabelSmallText(
+                                            text: 'RUN 1KM',
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                          SizedBox(height: 47),
+                                          Text('RECENT',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w300,
+                                              fontSize: 16,
+                                            ),
+                                          ),
+                                          LabelSmallText(
+                                            text: MainMomLevelViewController.MianMomLevelView_fly_bike5km_ExistingRecord,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ],
                                       ),
-                                      const SizedBox(height: 5),
-                                      TitleSmallText(
-                                        text: "PR",
-                                        fontWeight: FontWeight.w500,
-                                        color: colorScheme.error,
-                                      ),
-                                      HeadlineLargeText(
-                                        text: MainMomLevelViewController.MianMomLevelView_fly_jumpSu_nowRecord,
-                                        fontWeight: FontWeight.w600,
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                        children: [
+                                          HeadlineSmallText(
+                                            text: MainMomLevelViewController.MianMomLevelView_fly_bike5km_level,
+                                            fontWeight: FontWeight.w600,
+                                            color: colorScheme.onTertiaryContainer,
+                                          ),
+                                          const SizedBox(height: 5),
+                                          TitleSmallText(
+                                            text: "PR",
+                                            fontWeight: FontWeight.w500,
+                                            color: colorScheme.error,
+                                          ),
+                                          HeadlineLargeText(
+                                            text: MainMomLevelViewController.MianMomLevelView_fly_bike5km_nowRecord,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ],
                                       ),
                                     ],
                                   ),
-                                ],
-                              ),
+                                ),
+                                const SizedBox(height: 18),
+                                ///jump rope du
+                                ViewContainer(
+                                  width: 322,
+                                  height: 152,
+                                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 14),
+                                  color: colorScheme.onBackground,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: const [
+                                          LabelSmallText(
+                                            text: 'RUN 1KM',
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                          SizedBox(height: 47),
+                                          Text('RECENT',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w300,
+                                              fontSize: 16,
+                                            ),
+                                          ),
+                                          LabelSmallText(
+                                            text: MainMomLevelViewController.MianMomLevelView_fly_jumpDu_ExistingRecord,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ],
+                                      ),
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                        children: [
+                                          HeadlineSmallText(
+                                            text: MainMomLevelViewController.MianMomLevelView_fly_jumpDu_level,
+                                            fontWeight: FontWeight.w600,
+                                            color: colorScheme.onTertiaryContainer,
+                                          ),
+                                          const SizedBox(height: 5),
+                                          TitleSmallText(
+                                            text: "PR",
+                                            fontWeight: FontWeight.w500,
+                                            color: colorScheme.error,
+                                          ),
+                                          HeadlineLargeText(
+                                            text: MainMomLevelViewController.MianMomLevelView_fly_jumpDu_nowRecord,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
                         ),
-                        const SizedBox(width: 18),
-                        Column(
-                          children: [
-                            const SizedBox(height: 20),
-                            ///run 5km
-                            ViewContainer(
-                              width: 322,
-                              height: 152,
-                              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 14),
-                              color: colorScheme.onBackground,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: const [
-                                      LabelSmallText(
-                                        text: 'RUN 1KM',
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                      SizedBox(height: 47),
-                                      Text('RECENT',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w300,
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                      LabelSmallText(
-                                        text: MainMomLevelViewController.MianMomLevelView_fly_run5km_ExistingRecord,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ],
-                                  ),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      HeadlineSmallText(
-                                        text: MainMomLevelViewController.MianMomLevelView_fly_run5km_level,
-                                        fontWeight: FontWeight.w600,
-                                        color: colorScheme.onTertiaryContainer,
-                                      ),
-                                      const SizedBox(height: 5),
-                                      TitleSmallText(
-                                        text: "PR",
-                                        fontWeight: FontWeight.w500,
-                                        color: colorScheme.error,
-                                      ),
-                                      HeadlineLargeText(
-                                        text: MainMomLevelViewController.MianMomLevelView_fly_run5km_nowRecord,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                            const SizedBox(height: 18),
-                            ///bike 5km
-                            ViewContainer(
-                              width: 322,
-                              height: 152,
-                              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 14),
-                              color: colorScheme.onBackground,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: const [
-                                      LabelSmallText(
-                                        text: 'RUN 1KM',
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                      SizedBox(height: 47),
-                                      Text('RECENT',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w300,
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                      LabelSmallText(
-                                        text: MainMomLevelViewController.MianMomLevelView_fly_bike5km_ExistingRecord,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ],
-                                  ),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      HeadlineSmallText(
-                                        text: MainMomLevelViewController.MianMomLevelView_fly_bike5km_level,
-                                        fontWeight: FontWeight.w600,
-                                        color: colorScheme.onTertiaryContainer,
-                                      ),
-                                      const SizedBox(height: 5),
-                                      TitleSmallText(
-                                        text: "PR",
-                                        fontWeight: FontWeight.w500,
-                                        color: colorScheme.error,
-                                      ),
-                                      HeadlineLargeText(
-                                        text: MainMomLevelViewController.MianMomLevelView_fly_bike5km_nowRecord,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                            const SizedBox(height: 18),
-                            ///jump rope du
-                            ViewContainer(
-                              width: 322,
-                              height: 152,
-                              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 14),
-                              color: colorScheme.onBackground,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: const [
-                                      LabelSmallText(
-                                        text: 'RUN 1KM',
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                      SizedBox(height: 47),
-                                      Text('RECENT',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w300,
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                      LabelSmallText(
-                                        text: MainMomLevelViewController.MianMomLevelView_fly_jumpDu_ExistingRecord,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ],
-                                  ),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      HeadlineSmallText(
-                                        text: MainMomLevelViewController.MianMomLevelView_fly_jumpDu_level,
-                                        fontWeight: FontWeight.w600,
-                                        color: colorScheme.onTertiaryContainer,
-                                      ),
-                                      const SizedBox(height: 5),
-                                      TitleSmallText(
-                                        text: "PR",
-                                        fontWeight: FontWeight.w500,
-                                        color: colorScheme.error,
-                                      ),
-                                      HeadlineLargeText(
-                                        text: MainMomLevelViewController.MianMomLevelView_fly_jumpDu_nowRecord,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
+                      ),
                     ),
                   ],
                 ),

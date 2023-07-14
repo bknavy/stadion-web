@@ -25,6 +25,7 @@ dependencies:
   card_swiper : ^2.0.1
   neon_circular_timer: ^0.0.7
   stop_watch_timer: ^2.0.0
+  remedi_kopo: ^0.0.2
 
 dev_dependencies:
   flutter_test:
