@@ -25,8 +25,6 @@ class NumbersRecordPopupViewController extends GetxController {
   bool deadliftShow = false;
   bool lbShow = false;
   bool timeShow = false;
-  bool is1rm = true;
-  bool is3rm = true;
 
   String isYear = '';
   String isMonth = '';
@@ -100,16 +98,6 @@ class NumbersRecordPopupViewController extends GetxController {
       NumbersLbTimeRecordPopupView(applyLbAtSub: applyLb, applyTimeAtSub: applyTime),
       barrierColor: Colors.transparent,
     );
-  }
-
-  void select1rm(bool is1rm) {
-    this.is1rm = is1rm;
-    update();
-  }
-
-  void select3rm(bool is3rm) {
-    this.is3rm = is3rm;
-    update();
   }
 
   int? defaultChoiceIndex;
