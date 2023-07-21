@@ -20,21 +20,21 @@ class BadgeView extends GetView<BadgeViewController> {
     Get.put(BadgeViewController());
     return Scaffold(
       backgroundColor: colorScheme.background,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(60),
+        child: CustomAppBar(
+          title: 'BADGE',
+          isEnglishTitle: true,
+          withMenu: true,
+          withAction: true,
+          onLeading: () {
+            Get.off(const MainScreenView());
+          },
+        ),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            //추가한 커스텀 앱 바 위젯 (추후 좀 더 파라미터나 세부 위젯 추가필요)
-            CustomAppBar(
-              title: 'BADGE',
-              isEnglishTitle: true,
-              withAction: true,
-              onLeadingSearch: () {},
-              onLeadingImage: () {},
-              onLeading: () {
-                //off를 통해 view를 빠져나갈 시 기존 페이지를 dispose
-                Get.off(const MainScreenView());
-              },
-            ),
             const SizedBox(height: 55),
             MainTitle(
               width: 662,

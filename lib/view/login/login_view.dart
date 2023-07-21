@@ -54,19 +54,20 @@ class LoginView extends GetView<LoginViewController> {
     Get.put(LoginViewController());
     return Scaffold(
       backgroundColor: colorScheme.background,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(60),
+        child: CustomAppBar(
+          title: 'LOGIN',
+          isEnglishTitle: true,
+          withMenu: true,
+          withAction: false,
+          onLeading: () {
+            Get.off(const StartView());
+          },
+        ),
+      ),
       body: Column(
         children: [
-          //추가한 커스텀 앱 바 위젯 (추후 좀 더 파라미터나 세부 위젯 추가필요)
-          CustomAppBar(
-            title: 'LOGIN',
-            isEnglishTitle: true,
-            onLeadingSearch: (){},
-            onLeadingImage: (){},
-            onLeading: () {
-              //off를 통해 view를 빠져나갈 시 기존 페이지를 dispose
-              Get.off(const StartView());
-            },
-          ),
           const SizedBox(height: 56),
           // 아래처럼 메소드에 ///를 통해 주석을 적은 경우 마우스를 대서 설명 확인 가능
           buildTopMenu(),

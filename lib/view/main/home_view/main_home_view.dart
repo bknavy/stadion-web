@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stadion_project/style_config/color_scheme.dart';
 import 'package:stadion_project/style_config/text_theme.dart';
+import 'package:stadion_project/view/custom_widget/custom_app_bar.dart';
 import 'package:stadion_project/view/custom_widget/custom_text.dart';
 import 'package:intl/intl.dart';
 import 'package:stadion_project/view/custom_widget/view_container/view_container.dart';
@@ -17,7 +18,7 @@ import 'popup/home_gym_reservation_popup_view.dart';
 class MainHomeViewController extends GetxController {
   var date = DateTime.now();
 
-  static const String MianHomeView_appbar_user = '안녕하세~회원님';
+  static const String MianHomeView_appbar_user = '안녕하세요~회원님';
 
   static const String MianHomeView_attendance_name = '오운완!';
   static const int MianHomeView_attend_number = 9;
@@ -53,6 +54,8 @@ class MainHomeViewController extends GetxController {
       barrierColor: Colors.transparent,
     );
   }
+
+  bool withAction = false;
 }
 
 class MainHomeView extends GetView<MainHomeViewController> {
@@ -67,43 +70,12 @@ class MainHomeView extends GetView<MainHomeViewController> {
       backgroundColor: colorScheme.background,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60),
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 44),
-          child: AppBar(
-              backgroundColor: Colors.transparent,
-              elevation: 0,
-              title: Text(
-                MainHomeViewController.MianHomeView_appbar_user,
-                style: TextStyle(
-                  color: colorScheme.shadow,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 32,
-                ),
-              ),
-              centerTitle: true,
-              iconTheme: IconThemeData(
-                color: colorScheme.shadow,
-                size: 50,
-              ),
-              actions: [
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.search,
-                    size: 50,
-                  ),
-                  color: colorScheme.shadow,
-                ),
-                //SizedBox(width: 18),
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.image_outlined,
-                    size: 50,
-                  ),
-                  color: colorScheme.shadow,
-                ),
-              ]),
+        child: CustomAppBar(
+          title: MainHomeViewController.MianHomeView_appbar_user,
+          isEnglishTitle: false,
+          withMenu: false,
+          withAction: true,
+          onLeading: () {},
         ),
       ),
       drawer: MainMenuBarView(),
@@ -225,8 +197,7 @@ class MainHomeView extends GetView<MainHomeViewController> {
                               height: 296,
                               child: Swiper(
                                 itemBuilder: (BuildContext context, int index) {
-                                  return Image.asset(
-                                      'assets/images/login_image.png');
+                                  return Image.asset('assets/images/1MtC1.png');
                                 },
                                 itemCount: 3,
                                 control: SwiperControl(
@@ -464,7 +435,7 @@ class MainHomeView extends GetView<MainHomeViewController> {
                           HeadlineLargeText(
                             text:
                                 MainHomeViewController.MianHomeView_force_level,
-                            color: colorScheme.onSecondaryContainer,
+                            color: colorScheme.tertiary,
                             fontWeight: FontWeight.w600,
                           ),
                         ],
@@ -500,7 +471,7 @@ class MainHomeView extends GetView<MainHomeViewController> {
                           const SizedBox(height: 37),
                           HeadlineLargeText(
                             text: MainHomeViewController.MianHomeView_fly_level,
-                            color: colorScheme.onSecondaryContainer,
+                            color: colorScheme.primary,
                             fontWeight: FontWeight.w600,
                           ),
                         ],

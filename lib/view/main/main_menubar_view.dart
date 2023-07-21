@@ -10,6 +10,7 @@ import 'package:stadion_project/view/main/hamburger_menu/free_trial_request_view
 import 'package:stadion_project/view/main/hamburger_menu/movement_guide_view.dart';
 import 'package:stadion_project/view/main/hamburger_menu/notice_event_view.dart';
 import 'package:stadion_project/view/main/hamburger_menu/timer_cam_view/main_timer_cam_view.dart';
+import 'package:stadion_project/view/main/home_view/main_home_view.dart';
 
 import '../../style_config/text_theme.dart';
 import '../login/login_view.dart';
@@ -57,7 +58,9 @@ class MainMenuBarView extends GetView<MainMenuBarViewController> {
                         width: 50,
                         height: 50,
                         child: GestureDetector(
-                          onTap: () => Get.back(),
+                          onTap: () {
+                            Get.off(const MainHomeView());
+                          },
                           child: const Image(
                             image:
                                 AssetImage('assets/icons/home_hamburger.png'),
@@ -232,7 +235,7 @@ class MainMenuBarView extends GetView<MainMenuBarViewController> {
                   Row(
                     children: [
                       GestureDetector(
-                        onTap: () => Get.to(() => LoginView()),
+                        onTap: () => Get.offAll(() => LoginView()),
                         child: Container(
                           width: 310,
                           height: 66,

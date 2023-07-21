@@ -35,7 +35,6 @@ class MembershipInformationViewController extends GetxController {
   bool addressShow = true;
   bool addressDetailShow = true;
   bool addressSearchShow = true;
-  bool zonecodeShow = true;
   bool sexShow = true;
   bool heightShow = true;
   bool weightShow = true;
@@ -43,7 +42,7 @@ class MembershipInformationViewController extends GetxController {
 
   String isAddress = '';
   String isAddressDetail = '';
-  String isZonecode = '';
+  String isPost = '';
   bool isMale = true;
   String isHeight = '';
   String isWeight = '';
@@ -74,11 +73,6 @@ class MembershipInformationViewController extends GetxController {
 
   void addressDetailField(bool addressDetailShow) {
     this.addressDetailShow = addressDetailShow;
-    update();
-  }
-
-  void zonecodeField(bool zonecodeShow) {
-    this.zonecodeShow = zonecodeShow;
     update();
   }
 
@@ -114,15 +108,10 @@ class MembershipInformationViewController extends GetxController {
     update();
   }
 
-  void applyAddressDetail(String value) {
-    isAddressDetail = value;
-    addressDetailController.text = '${isAddressDetail}';
-    update();
-  }
-
-  void applyZonecode(String value) {
-    isZonecode = value;
-    addressDetailController.text = ' (우)${isZonecode}';
+  void applyAddressDetail(String valueAddressDetail, String valuePost) {
+    isAddressDetail = valueAddressDetail;
+    isPost = valuePost;
+    addressDetailController.text = '${isAddressDetail} (우)${isPost}';
     update();
   }
 
@@ -200,20 +189,21 @@ class MembershipInformationView
     Get.put(MembershipInformationViewController());
     return Scaffold(
       backgroundColor: colorScheme.background,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(60),
+        child: CustomAppBar(
+          title: '회원가입',
+          isEnglishTitle: false,
+          withMenu: true,
+          withAction: false,
+          onLeading: () {
+            Get.off(const MembershipPasswordInputView());
+          },
+        ),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            //추가한 커스텀 앱 바 위젯 (추후 좀 더 파라미터나 세부 위젯 추가필요)
-            CustomAppBar(
-              title: '회원가입',
-              isEnglishTitle: false,
-              onLeadingSearch: () {},
-              onLeadingImage: () {},
-              onLeading: () {
-                //off를 통해 view를 빠져나갈 시 기존 페이지를 dispose
-                Get.off(const MembershipPasswordInputView());
-              },
-            ),
             const SizedBox(height: 56),
             LoginTitle(
               text: '스타디온 앱에서 사용할\n추가 정보를 입력해 주세요.',
@@ -448,10 +438,8 @@ class MembershipInformationView
                 onChanged: (value) {
                   if (value.isNotEmpty) {
                     controller.addressDetailField(true);
-                    controller.zonecodeField(true);
                   } else {
                     controller.addressDetailField(false);
-                    controller.zonecodeField(false);
                   }
                 },
                 controller: controller.addressDetailController,

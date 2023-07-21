@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stadion_project/style_config/color_scheme.dart';
 import 'package:stadion_project/view/custom_widget/custom_app_bar.dart';
+import 'package:stadion_project/view/main/main_menubar_view.dart';
 
 import '../../style_config/text_theme.dart';
 import '../custom_widget/buttons/button_with_rollover.dart';
@@ -21,19 +22,20 @@ class IdFindSendView extends GetView<IdFindSendViewController> {
     Get.put(IdFindSendViewController());
     return Scaffold(
       backgroundColor: colorScheme.background,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(60),
+        child: CustomAppBar(
+          title: '아이디 찾기',
+          isEnglishTitle: false,
+          withMenu: true,
+          withAction: false,
+          onLeading: () {
+            Get.off(const LoginView());
+          },
+        ),
+      ),
       body: Column(
         children: [
-          //추가한 커스텀 앱 바 위젯 (추후 좀 더 파라미터나 세부 위젯 추가필요)
-          CustomAppBar(
-            title: '아이디 찾기',
-            isEnglishTitle: false,
-            onLeadingSearch: (){},
-            onLeadingImage: (){},
-            onLeading: () {
-              //off를 통해 view를 빠져나갈 시 기존 페이지를 dispose
-              Get.off(const LoginView());
-            },
-          ),
           const SizedBox(height: 56),
           LoginTitle(
             text: '아이디를 이메일로\n발송해 드렸어요.',

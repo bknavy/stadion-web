@@ -60,17 +60,20 @@ class LoginMembershipAgreementView
     Get.put(LoginMembershipAgreementViewController());
     return Scaffold(
       backgroundColor: colorScheme.background,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(60),
+        child: CustomAppBar(
+          title: '회원가입',
+          isEnglishTitle: false,
+          withMenu: true,
+          withAction: false,
+          onLeading: () {
+            Get.off(const LoginView());
+          },
+        ),
+      ),
       body: Column(
         children: [
-          CustomAppBar(
-            title: '회원가입',
-            isEnglishTitle: false,
-            onLeadingSearch: (){},
-            onLeadingImage: (){},
-            onLeading: () {
-              Get.off(const LoginView());
-            },
-          ),
           const SizedBox(height: 56),
           LoginTitle(
             text: '스타디온 서비스 이용약관에\n동의해 주세요.',

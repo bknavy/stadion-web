@@ -35,6 +35,10 @@ class AddressPopupViewController extends GetxController {
     this.postShow = postShow;
     update();
   }
+
+  String _selectedAddress = '';
+  String _selectedAddressDetail = '';
+  String _selectedPost = '';
 }
 
 class AddressPopupView extends GetView<AddressPopupViewController> {
@@ -45,7 +49,7 @@ class AddressPopupView extends GetView<AddressPopupViewController> {
       : super(key: key);
 
   final Function(String) applyAddressAtSub;
-  final Function(String) applyAddressDetailAtSub;
+  final Function(String, String) applyAddressDetailAtSub;
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +62,7 @@ class AddressPopupView extends GetView<AddressPopupViewController> {
         shadowColor: colorScheme.shadow.withOpacity(0.1),
         content: Stack(
           children: [
-            ///바탕 스타
+            ///바탕 스타일
             Container(
               clipBehavior: Clip.hardEdge,
               decoration: BoxDecoration(),
@@ -200,18 +204,17 @@ class AddressPopupView extends GetView<AddressPopupViewController> {
                   GetBuilder<AddressPopupViewController>(builder: (controller) {
                     return ButtonWithRollover(
                       onTap: () {
-                        /*if (controller._selectedAddress == 0) {
-                          applyAddressAtSub(
-                              controller._selectedAddress.toString());
+                        if (controller._selectedAddress == 0) {
+                          applyAddressAtSub(controller._selectedAddress);
                           applyAddressDetailAtSub(
-                              controller._selectedAddressDetail.toString(),
-                              controller._selectedPost.toString());
+                              controller._selectedAddressDetail,
+                              controller._selectedPost);
                         } else {
-                          applyAddressAtSub(controller._selectedAddress.toString());
+                          applyAddressAtSub(controller._selectedAddress);
                           applyAddressDetailAtSub(
-                              controller._selectedAddressDetail.toString(),
-                              controller._seectedPost.toString());
-                        }*/
+                              controller._selectedAddressDetail,
+                              controller._selectedPost);
+                        }
                         Get.back();
                       },
                       backgroundColor: controller.postShow &&

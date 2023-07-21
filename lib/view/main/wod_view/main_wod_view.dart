@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stadion_project/style_config/color_scheme.dart';
 import 'package:stadion_project/view/custom_widget/buttons/text_toggle_button.dart';
+import 'package:stadion_project/view/custom_widget/custom_app_bar.dart';
 import 'package:stadion_project/view/custom_widget/text_form_field/login_text_field.dart';
 import 'package:stadion_project/view/main/main_menubar_view.dart';
 import 'package:stadion_project/view/main/wod_view/popup/wod_box_popup_view.dart';
@@ -59,41 +60,12 @@ class MainWodView extends GetView<MainWodViewController> {
       backgroundColor: colorScheme.background,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60),
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 44),
-          child: AppBar(
-              backgroundColor: Colors.transparent,
-              elevation: 0,
-              title: Text('WoD',
-                style: TextStyle(
-                  color: colorScheme.shadow,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 32,
-                ),
-              ),
-              centerTitle: true,
-              iconTheme: IconThemeData(
-                color: colorScheme.shadow,
-                size: 50,
-              ),
-              actions: [
-                IconButton(
-                  onPressed: (){},
-                  icon: Icon(Icons.search,
-                    size: 50,
-                  ),
-                  color: colorScheme.shadow,
-                ),
-                //SizedBox(width: 18),
-                IconButton(
-                  onPressed: (){},
-                  icon: Icon(Icons.image_outlined,
-                    size: 50,
-                  ),
-                  color: colorScheme.shadow,
-                ),
-              ]
-          ),
+        child: CustomAppBar(
+          title: 'WoD',
+          isEnglishTitle: true,
+          withMenu: false,
+          withAction: true,
+          onLeading: () {},
         ),
       ),
       drawer: MainMenuBarView(),

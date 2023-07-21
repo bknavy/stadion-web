@@ -41,41 +41,14 @@ class TimerCamAlbumView extends GetView<TimerCamAlbumViewController> {
                 //추가한 커스텀 앱 바 위젯 (추후 좀 더 파라미터나 세부 위젯 추가필요)
                 PreferredSize(
                   preferredSize: Size.fromHeight(60),
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 44),
-                    child: AppBar(
-                        backgroundColor: Colors.transparent,
-                        elevation: 0,
-                        title: Text('VIDEOS',
-                          style: TextStyle(
-                            color: colorScheme.shadow,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 32,
-                          ),
-                        ),
-                        centerTitle: true,
-                        iconTheme: IconThemeData(
-                          color: colorScheme.shadow,
-                          size: 50,
-                        ),
-                        actions: [
-                          IconButton(
-                            onPressed: (){},
-                            icon: Icon(Icons.search,
-                              size: 50,
-                            ),
-                            color: colorScheme.shadow,
-                          ),
-                          //SizedBox(width: 18),
-                          IconButton(
-                            onPressed: (){},
-                            icon: Icon(Icons.image_outlined,
-                              size: 50,
-                            ),
-                            color: colorScheme.shadow,
-                          ),
-                        ]
-                    ),
+                  child: CustomAppBar(
+                    title: 'VIDEOS',
+                    isEnglishTitle: true,
+                    withMenu: true,
+                    withAction: true,
+                    onLeading: () {
+                      Get.back();
+                    },
                   ),
                 ),
                 const SizedBox(height: 55),

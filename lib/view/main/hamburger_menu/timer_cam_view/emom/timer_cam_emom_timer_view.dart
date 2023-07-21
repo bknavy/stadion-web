@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stadion_project/style_config/color_scheme.dart';
 import 'package:stadion_project/style_config/text_theme.dart';
+import 'package:stadion_project/view/custom_widget/custom_app_bar.dart';
 import 'package:stadion_project/view/custom_widget/custom_text.dart';
 import 'package:stadion_project/view/custom_widget/view_container/view_container.dart';
 import 'package:stadion_project/view/main/custom_bottomNavigationBar.dart';
@@ -70,17 +71,15 @@ class TimerCamEmomTimerView extends GetView<TimerCamEmomTimerViewController> {
             ///appbar
             PreferredSize(
               preferredSize: Size.fromHeight(60),
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 44),
-                child: AppBar(
-                  backgroundColor: Colors.transparent,
-                  elevation: 0,
-                  centerTitle: true,
-                  iconTheme: IconThemeData(
-                    color: colorScheme.background,
-                    size: 50,
-                  ),
-                ),
+              child: CustomAppBar(
+                title: '',
+                isEnglishTitle: true,
+                withMenu: true,
+                withAction: false,
+                onDarkTheme: true,
+                onLeading: () {
+                  Get.back();
+                },
               ),
             ),
 

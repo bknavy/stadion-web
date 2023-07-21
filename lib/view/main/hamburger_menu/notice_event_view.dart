@@ -46,22 +46,22 @@ class NoticeEventView extends GetView<NoticeEventViewController> {
     controller.isNotice = isEvent;
     return Scaffold(
       backgroundColor: colorScheme.background,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(60),
+        child: CustomAppBar(
+          title: controller.isNotice? '공지사항' : '이벤트',
+          isEnglishTitle: false,
+          withMenu: true,
+          withAction: true,
+          onLeading: () {
+            Get.off(const MainScreenView());
+          },
+        ),
+      ),
       body: GetBuilder<NoticeEventViewController>(
         builder: (controller) {
           return Column(
             children: [
-              //추가한 커스텀 앱 바 위젯 (추후 좀 더 파라미터나 세부 위젯 추가필요)
-               CustomAppBar(
-                    title: controller.isNotice? '공지사항' : '이벤트',
-                    isEnglishTitle: false,
-                    withAction: true,
-                    onLeadingSearch: () {},
-                    onLeadingImage: () {},
-                    onLeading: () {
-                      //off를 통해 view를 빠져나갈 시 기존 페이지를 dispose
-                      Get.off(const MainScreenView());
-                    },
-                  ),
               const SizedBox(height: 56),
               const MainTitle(
                 width: 662,

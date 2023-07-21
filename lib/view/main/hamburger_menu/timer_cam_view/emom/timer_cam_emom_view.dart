@@ -3,15 +3,13 @@ import 'package:get/get.dart';
 import 'package:stadion_project/style_config/color_scheme.dart';
 import 'package:stadion_project/style_config/text_theme.dart';
 import 'package:stadion_project/view/custom_widget/buttons/button_with_rollover.dart';
-import 'package:stadion_project/view/custom_widget/buttons/text_toggle_button.dart';
+import 'package:stadion_project/view/custom_widget/custom_app_bar.dart';
 import 'package:stadion_project/view/custom_widget/custom_text.dart';
 import 'package:stadion_project/view/custom_widget/text_form_field/login_text_field.dart';
 import 'package:stadion_project/view/custom_widget/view_container/view_container.dart';
 import 'package:stadion_project/view/main/custom_bottomNavigationBar.dart';
 import 'package:stadion_project/view/main/hamburger_menu/timer_cam_view/emom/timer_cam_emom_input_view.dart';
 import 'package:stadion_project/view/main/hamburger_menu/timer_cam_view/emom/timer_cam_emom_timer_view.dart';
-import 'package:stadion_project/view/main/main_menubar_view.dart';
-import 'package:stadion_project/view/main/wod_view/popup/wod_box_popup_view.dart';
 
 //로그인 뷰에서 사용될 Get X controller.
 class TimerCamEmomViewController extends GetxController {
@@ -214,43 +212,15 @@ class TimerCamEmomView extends GetView<TimerCamEmomViewController> {
               ///엡바
               PreferredSize(
                 preferredSize: Size.fromHeight(60),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 44),
-                  child: AppBar(
-                      backgroundColor: Colors.transparent,
-                      elevation: 0,
-                      title: Text(
-                        'TIMER CAM',
-                        style: TextStyle(
-                          color: colorScheme.background,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 32,
-                        ),
-                      ),
-                      centerTitle: true,
-                      iconTheme: IconThemeData(
-                        color: colorScheme.background,
-                        size: 50,
-                      ),
-                      actions: [
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.search,
-                            size: 50,
-                          ),
-                          color: colorScheme.background,
-                        ),
-                        //SizedBox(width: 18),
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.image_outlined,
-                            size: 50,
-                          ),
-                          color: colorScheme.background,
-                        ),
-                      ]),
+                child: CustomAppBar(
+                  title: 'TIMER CAM',
+                  isEnglishTitle: true,
+                  withMenu: true,
+                  withAction: true,
+                  onDarkTheme: true,
+                  onLeading: () {
+                    Get.back();
+                  },
                 ),
               ),
 

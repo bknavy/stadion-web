@@ -32,19 +32,20 @@ class MembershipIdInputView extends GetView<MembershipIdInputViewController> {
     Get.put(MembershipIdInputViewController());
     return Scaffold(
       backgroundColor: colorScheme.background,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(60),
+        child: CustomAppBar(
+          title: '회원가입',
+          isEnglishTitle: false,
+          withMenu: true,
+          withAction: false,
+          onLeading: () {
+            Get.off(const LoginMembershipAgreementView());
+          },
+        ),
+      ),
       body: Column(
         children: [
-          //추가한 커스텀 앱 바 위젯 (추후 좀 더 파라미터나 세부 위젯 추가필요)
-          CustomAppBar(
-            title: '회원가입',
-            isEnglishTitle: false,
-            onLeadingSearch: (){},
-            onLeadingImage: (){},
-            onLeading: () {
-              //off를 통해 view를 빠져나갈 시 기존 페이지를 dispose
-              Get.off(const LoginMembershipAgreementView());
-            },
-          ),
           const SizedBox(height: 56),
           LoginTitle(
             text: '로그인에 사용할\n아이디를 입력해 주세요.',
