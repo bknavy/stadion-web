@@ -4,25 +4,33 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stadion_project/style_config/color_scheme.dart';
-
-import '../../../style_config/text_theme.dart';
-import '../../custom_widget/buttons/button_with_rollover.dart';
-import '../../custom_widget/custom_text.dart';
+import 'package:stadion_project/style_config/text_theme.dart';
+import 'package:stadion_project/view/custom_widget/buttons/button_with_rollover.dart';
+import 'package:stadion_project/view/custom_widget/custom_text.dart';
 
 //로그인 뷰에서 사용될 Get X controller.
-class SexPopupViewController extends GetxController {
-  List<String> sexSelectedList = ['남자', '여자'];
-  int _selectedSex = 0;
+class SelectOnePopupViewController extends GetxController {
+  List<String> SelectOneList = ['NAME', 'DATE'];
+  int _selectedOne = 0;
 }
 
-class SexPopupView extends GetView<SexPopupViewController> {
-  const SexPopupView({Key? key, required this.applySexAtSub}) : super(key: key);
+class SelectOnePopupView extends GetView<SelectOnePopupViewController> {
+  const SelectOnePopupView(
+      {Key? key,
+      required this.applyWodSortAtSub,
+      required this.applyMomLevelSortAtSub,
+      required this.applyMtcSortAtSub,
+      required this.applyTrainingSortAtSub})
+      : super(key: key);
 
-  final Function(bool) applySexAtSub;
+  final Function(String) applyWodSortAtSub;
+  final Function(String) applyMomLevelSortAtSub;
+  final Function(String) applyMtcSortAtSub;
+  final Function(String) applyTrainingSortAtSub;
 
   @override
   Widget build(BuildContext context) {
-    Get.put(SexPopupViewController());
+    Get.put(SelectOnePopupViewController());
     return AlertDialog(
       insetPadding: EdgeInsets.zero,
       backgroundColor: Colors.transparent,
@@ -66,8 +74,10 @@ class SexPopupView extends GetView<SexPopupViewController> {
             child: Column(
               children: [
                 SizedBox(height: 100),
-                PopupText(text: '성별'),
-                const SizedBox(height: 126),
+                PopupText(
+                  text: 'SELECT ONE',
+                ),
+                const SizedBox(height: 125),
                 Container(
                   width: 420,
                   height: 2,
@@ -107,22 +117,22 @@ class SexPopupView extends GetView<SexPopupViewController> {
 
           ///CupertinoPicker 스타일
           Positioned(
-            //top: 240,
             child: Container(
-              height: 670,
+              height: 665,
+              width: 665,
               child: CupertinoPicker(
                 magnification: 2,
                 squeeze: 0.5,
                 itemExtent: 50,
                 selectionOverlay: null,
                 onSelectedItemChanged: (int selectedItem) {
-                  controller._selectedSex = selectedItem;
+                  controller._selectedOne = selectedItem;
                 },
-                children: List<Widget>.generate(
-                    controller.sexSelectedList.length, (int index) {
+                children: List<Widget>.generate(controller.SelectOneList.length,
+                    (int index) {
                   return Center(
                     child: Text(
-                      controller.sexSelectedList[index],
+                      controller.SelectOneList[index].toString(),
                       style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.w600,
@@ -158,18 +168,31 @@ class SexPopupView extends GetView<SexPopupViewController> {
             right: 50,
             child: ButtonWithRollover(
               onTap: () {
-                if(controller._selectedSex==0) {
-                  applySexAtSub(true);
-                }
-                else {
-                  applySexAtSub(false);
+                if (controller._selectedOne == 0) {
+                  applyWodSortAtSub(
+                      controller.SelectOneList[controller._selectedOne]);
+                  applyMomLevelSortAtSub(
+                      controller.SelectOneList[controller._selectedOne]);
+                  applyMtcSortAtSub(
+                      controller.SelectOneList[controller._selectedOne]);
+                  applyTrainingSortAtSub(
+                      controller.SelectOneList[controller._selectedOne]);
+                } else {
+                  applyWodSortAtSub(
+                      controller.SelectOneList[controller._selectedOne]);
+                  applyMomLevelSortAtSub(
+                      controller.SelectOneList[controller._selectedOne]);
+                  applyMtcSortAtSub(
+                      controller.SelectOneList[controller._selectedOne]);
+                  applyTrainingSortAtSub(
+                      controller.SelectOneList[controller._selectedOne]);
                 }
                 Get.back();
               },
               backgroundColor: colorScheme.background,
               child: Center(
                 child: Text(
-                  '저장하기',
+                  '선택하기',
                   style: textThemeKo.headlineSmall!.copyWith(
                     fontWeight: FontWeight.w600,
                     color: colorScheme.surfaceVariant,

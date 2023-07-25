@@ -276,21 +276,15 @@ class MomLevelDetailsCategoryView
                             fontWeight: FontWeight.w600,
                           ),
                         ),
-                        const SizedBox(width: 150),
+                        const SizedBox(width: 130),
                         GestureDetector(
                           onTap: () {},
-                          child: Icon(
-                            Icons.image_outlined,
-                            size: 35,
-                          ),
+                          child: Image.asset('assets/images/picture.png'),
                         ),
                         const SizedBox(width: 16),
                         GestureDetector(
                           onTap: () {},
-                          child: Icon(
-                            Icons.add_box_outlined,
-                            size: 35,
-                          ),
+                          child: Image.asset('assets/images/video.png')
                         ),
                       ],
                     ),
@@ -347,21 +341,15 @@ class MomLevelDetailsCategoryView
                             fontWeight: FontWeight.w600,
                           ),
                         ),
-                        const SizedBox(width: 150),
+                        const SizedBox(width: 130),
                         GestureDetector(
                           onTap: () {},
-                          child: Icon(
-                            Icons.add_box_outlined,
-                            size: 35,
-                          ),
+                          child: Image.asset('assets/images/picture.png'),
                         ),
                         const SizedBox(width: 16),
                         GestureDetector(
-                          onTap: () {},
-                          child: Icon(
-                            Icons.add_box_outlined,
-                            size: 35,
-                          ),
+                            onTap: () {},
+                            child: Image.asset('assets/images/video.png')
                         ),
                       ],
                     ),

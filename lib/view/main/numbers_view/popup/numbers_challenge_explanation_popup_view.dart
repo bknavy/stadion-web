@@ -59,24 +59,7 @@ class MomsterChallengePopupView
             right: 50,
             child: Column(
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    GestureDetector(
-                      onTap: () => Get.back(),
-                      child: Container(
-                        height: 50,
-                        width: 50,
-                        child: Icon(
-                          Icons.close,
-                          size: 50,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 20),
-                  ],
-                ),
-                const SizedBox(height: 30),
+                const SizedBox(height: 80),
                HeadlineSmallText(
                    text: 'MoMSTER THE CHALLENGE',
                  fontWeight: FontWeight.w600,
@@ -87,6 +70,24 @@ class MomsterChallengePopupView
                   fontWeight: FontWeight.w300,
                 ),
               ],
+            ),
+          ),
+
+          ///단기버튼
+          Positioned(
+            top: 20,
+            //left: 50,
+            right: 20,
+            child: GestureDetector(
+              onTap: () => Get.back(),
+              child: Container(
+                height: 50,
+                width: 50,
+                child: Icon(
+                  Icons.close,
+                  size: 50,
+                ),
+              ),
             ),
           ),
         ],

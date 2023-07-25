@@ -24,24 +24,6 @@ class HomeGymReservationPopupViewController extends GetxController {
     defaultChoiceIndex = value ? index : null;
     update();
   }
-
-  int? timeChoiceIndex;
-  final List<String> _timeList = [
-    '06:00',
-    '08:00',
-    '09:00',
-    '10:00',
-    '11:00',
-    '12:00',
-    '14:00',
-    '15:00',
-    '16:00'
-  ];
-
-  void selectTime(index, value) {
-    timeChoiceIndex = value ? index : null;
-    update();
-  }
 }
 
 class HomeGymReservationPopupView
@@ -192,51 +174,42 @@ class HomeGymReservationPopupView
               ),
             ),
 
-            ///저장버튼
+            ///닫기버튼
             Positioned(
               top: 20,
-              //left: 50,
-              //right: 50,
-              child: Column(
-                children: [
-                  Row(
-                    //mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      const SizedBox(width: 592),
-                      GestureDetector(
-                        onTap: () => Get.back(),
-                        child: Container(
-                          height: 50,
-                          width: 50,
-                          child: Icon(
-                            Icons.close,
-                            size: 50,
-                          ),
-                        ),
-                      ),
-                      //const SizedBox(width: 20),
-                    ],
+              right: 20,
+              child: GestureDetector(
+                onTap: () => Get.back(),
+                child: Container(
+                  height: 50,
+                  width: 50,
+                  child: Icon(
+                    Icons.close,
+                    size: 50,
                   ),
-                  const SizedBox(height: 826),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 50),
-                    child: ButtonWithRollover(
-                      onTap: () {
-                        Get.back();
-                      },
-                      backgroundColor: colorScheme.background,
-                      child: Center(
-                        child: Text(
-                          '예약하기',
-                          style: textThemeKo.headlineSmall!.copyWith(
-                            fontWeight: FontWeight.w600,
-                            color: colorScheme.surfaceVariant,
-                          ),
-                        ),
-                      ),
+                ),
+              ),
+            ),
+
+            ///저장버튼
+            Positioned(
+              top: 896,
+              left: 50,
+              right: 50,
+              child: ButtonWithRollover(
+                onTap: () {
+                  Get.back();
+                },
+                backgroundColor: colorScheme.background,
+                child: Center(
+                  child: Text(
+                    '예약하기',
+                    style: textThemeKo.headlineSmall!.copyWith(
+                      fontWeight: FontWeight.w600,
+                      color: colorScheme.surfaceVariant,
                     ),
                   ),
-                ],
+                ),
               ),
             ),
           ],

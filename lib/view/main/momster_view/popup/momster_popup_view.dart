@@ -155,54 +155,49 @@ class MomsterPopupView extends GetView<MomsterPopupViewController> {
             ),
           ),
 
-          ///저장버튼
+          ///닫기버튼
           Positioned(
             top: 20,
+            right: 20,
+            child: GestureDetector(
+              onTap: () => Get.back(),
+              child: Container(
+                height: 50,
+                width: 50,
+                child: Icon(
+                  Icons.close,
+                  size: 50,
+                ),
+              ),
+            ),
+          ),
+
+          ///저장버튼
+          Positioned(
+            top: 796,
             left: 50,
             right: 50,
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    GestureDetector(
-                      onTap: () => Get.back(),
-                      child: Container(
-                        height: 50,
-                        width: 50,
-                        child: Icon(
-                          Icons.close,
-                          size: 50,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 20),
-                  ],
-                ),
-                const SizedBox(height: 726),
-                ButtonWithRollover(
-                  onTap: () {
-                    if (controller._selectedMomster == 0) {
-                      applyMonthAtSub(controller
-                          .momsterSelectedList[controller._selectedMomster]);
-                    } else {
-                      applyMonthAtSub(controller
-                          .momsterSelectedList[controller._selectedMomster]);
-                    }
-                    Get.back();
-                  },
-                  backgroundColor: colorScheme.background,
-                  child: Center(
-                    child: Text(
-                      '저장하기',
-                      style: textThemeKo.headlineSmall!.copyWith(
-                        fontWeight: FontWeight.w600,
-                        color: colorScheme.surfaceVariant,
-                      ),
-                    ),
+            child: ButtonWithRollover(
+              onTap: () {
+                if (controller._selectedMomster == 0) {
+                  applyMonthAtSub(controller
+                      .momsterSelectedList[controller._selectedMomster]);
+                } else {
+                  applyMonthAtSub(controller
+                      .momsterSelectedList[controller._selectedMomster]);
+                }
+                Get.back();
+              },
+              backgroundColor: colorScheme.background,
+              child: Center(
+                child: Text(
+                  '저장하기',
+                  style: textThemeKo.headlineSmall!.copyWith(
+                    fontWeight: FontWeight.w600,
+                    color: colorScheme.surfaceVariant,
                   ),
                 ),
-              ],
+              ),
             ),
           ),
         ],

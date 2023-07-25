@@ -10,6 +10,13 @@ import 'package:stadion_project/view/custom_widget/text_form_field/login_text_fi
 import 'package:stadion_project/view/custom_widget/view_container/view_container.dart';
 import 'package:stadion_project/view/main/main_menubar_view.dart';
 import 'package:stadion_project/view/main/momster_view/popup/momster_popup_view.dart';
+import 'package:stadion_project/view/main/my_page_view/mom_level_record_view/mom_level_record_view.dart';
+import 'package:stadion_project/view/main/my_page_view/mtc_record_view/mtc_record_view.dart';
+import 'package:stadion_project/view/main/my_page_view/my_page_profile_view/my_page_profile_view.dart';
+import 'package:stadion_project/view/main/my_page_view/training_log_view/training_log_view.dart';
+import 'package:stadion_project/view/main/my_page_view/wod_record_view/wod_record_view.dart';
+
+import 'personal_best_view/personal_best_view.dart';
 
 //로그인 뷰에서 사용될 Get X controller.
 class MainMyPageViewController extends GetxController {
@@ -57,6 +64,7 @@ class MainMyPageView extends GetView<MainMyPageViewController> {
           child: Column(
             children: [
               const SizedBox(height: 50),
+
               ///인사말 및 이미지
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -116,6 +124,7 @@ class MainMyPageView extends GetView<MainMyPageViewController> {
                 ],
               ),
               const SizedBox(height: 55),
+
               ///밑줄
               Container(
                 width: 662,
@@ -123,6 +132,7 @@ class MainMyPageView extends GetView<MainMyPageViewController> {
                 color: colorScheme.shadow,
               ),
               const SizedBox(height: 40),
+
               ///팔로워 수 및 프로필 수정 버튼
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -167,7 +177,9 @@ class MainMyPageView extends GetView<MainMyPageViewController> {
                     width: 208,
                     height: 80,
                     child: ButtonWithRollover(
-                      onTap: () {},
+                      onTap: () {
+                        Get.to(const MyPageProfileView());
+                      },
                       backgroundColor: colorScheme.onBackground,
                       child: Center(
                         child: Text(
@@ -183,6 +195,7 @@ class MainMyPageView extends GetView<MainMyPageViewController> {
                 ],
               ),
               const SizedBox(height: 60),
+
               ///동영상
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -222,6 +235,7 @@ class MainMyPageView extends GetView<MainMyPageViewController> {
                 ],
               ),
               const SizedBox(height: 60),
+
               ///이번달 기록 그래프
               Column(
                 children: [
@@ -241,6 +255,7 @@ class MainMyPageView extends GetView<MainMyPageViewController> {
                 ],
               ),
               const SizedBox(height: 60),
+
               ///personal best
               ViewContainer(
                 width: 662,
@@ -269,8 +284,11 @@ class MainMyPageView extends GetView<MainMyPageViewController> {
                                 fontWeight: FontWeight.w600,
                               ),
                               GestureDetector(
-                                onTap: () {},
-                                child: Image.asset('assets/icons/my_page_button.png'),
+                                onTap: () {
+                                  Get.to(const PersonalBestView());
+                                },
+                                child: Image.asset(
+                                    'assets/icons/my_page_button.png'),
                               ),
                             ],
                           ),
@@ -284,14 +302,17 @@ class MainMyPageView extends GetView<MainMyPageViewController> {
                                 width: 350,
                                 child: Row(
                                   children: [
-                                    Text('최근: ',
+                                    Text(
+                                      '최근: ',
                                       style: TextStyle(
                                         fontWeight: FontWeight.w400,
                                         fontSize: 26,
                                         letterSpacing: -1.3,
                                       ),
                                     ),
-                                    Text(MainMyPageViewController.MainMyPageView_personal,
+                                    Text(
+                                      MainMyPageViewController
+                                          .MainMyPageView_personal,
                                       style: TextStyle(
                                         fontWeight: FontWeight.w400,
                                         fontSize: 26,
@@ -301,7 +322,8 @@ class MainMyPageView extends GetView<MainMyPageViewController> {
                                 ),
                               ),
                               LabelMediumText(
-                                text: MainMyPageViewController.MainMyPageView_personal_data,
+                                text: MainMyPageViewController
+                                    .MainMyPageView_personal_data,
                                 fontWeight: FontWeight.w300,
                                 letterSpacing: -0.65,
                               ),
@@ -314,6 +336,7 @@ class MainMyPageView extends GetView<MainMyPageViewController> {
                 ),
               ),
               const SizedBox(height: 18),
+
               ///wod record
               ViewContainer(
                 width: 662,
@@ -342,8 +365,11 @@ class MainMyPageView extends GetView<MainMyPageViewController> {
                                 fontWeight: FontWeight.w600,
                               ),
                               GestureDetector(
-                                onTap: () {},
-                                child: Image.asset('assets/icons/my_page_button.png'),
+                                onTap: () {
+                                  Get.to(const WodRecordView());
+                                },
+                                child: Image.asset(
+                                    'assets/icons/my_page_button.png'),
                               ),
                             ],
                           ),
@@ -357,14 +383,17 @@ class MainMyPageView extends GetView<MainMyPageViewController> {
                                 width: 350,
                                 child: Row(
                                   children: [
-                                    Text('최근: ',
+                                    Text(
+                                      '최근: ',
                                       style: TextStyle(
                                         fontWeight: FontWeight.w400,
                                         fontSize: 26,
                                         letterSpacing: -1.3,
                                       ),
                                     ),
-                                    Text(MainMyPageViewController.MainMyPageView_wod_record,
+                                    Text(
+                                      MainMyPageViewController
+                                          .MainMyPageView_wod_record,
                                       style: TextStyle(
                                         fontWeight: FontWeight.w400,
                                         fontSize: 26,
@@ -374,7 +403,8 @@ class MainMyPageView extends GetView<MainMyPageViewController> {
                                 ),
                               ),
                               LabelMediumText(
-                                text: MainMyPageViewController.MainMyPageView_wod_record_data,
+                                text: MainMyPageViewController
+                                    .MainMyPageView_wod_record_data,
                                 fontWeight: FontWeight.w300,
                                 letterSpacing: -0.65,
                               ),
@@ -387,6 +417,7 @@ class MainMyPageView extends GetView<MainMyPageViewController> {
                 ),
               ),
               const SizedBox(height: 18),
+
               ///mom level
               ViewContainer(
                 width: 662,
@@ -415,8 +446,11 @@ class MainMyPageView extends GetView<MainMyPageViewController> {
                                 fontWeight: FontWeight.w600,
                               ),
                               GestureDetector(
-                                onTap: () {},
-                                child: Image.asset('assets/icons/my_page_button.png'),
+                                onTap: () {
+                                  Get.to(const MomLevelRecordView());
+                                },
+                                child: Image.asset(
+                                    'assets/icons/my_page_button.png'),
                               ),
                             ],
                           ),
@@ -430,14 +464,17 @@ class MainMyPageView extends GetView<MainMyPageViewController> {
                                 width: 350,
                                 child: Row(
                                   children: [
-                                    Text('최근: ',
+                                    Text(
+                                      '최근: ',
                                       style: TextStyle(
                                         fontWeight: FontWeight.w400,
                                         fontSize: 26,
                                         letterSpacing: -1.3,
                                       ),
                                     ),
-                                    Text(MainMyPageViewController.MainMyPageView_mom_level,
+                                    Text(
+                                      MainMyPageViewController
+                                          .MainMyPageView_mom_level,
                                       style: TextStyle(
                                         fontWeight: FontWeight.w400,
                                         fontSize: 26,
@@ -447,7 +484,8 @@ class MainMyPageView extends GetView<MainMyPageViewController> {
                                 ),
                               ),
                               LabelMediumText(
-                                text: MainMyPageViewController.MainMyPageView_mom_level_data,
+                                text: MainMyPageViewController
+                                    .MainMyPageView_mom_level_data,
                                 fontWeight: FontWeight.w300,
                                 letterSpacing: -0.65,
                               ),
@@ -460,6 +498,7 @@ class MainMyPageView extends GetView<MainMyPageViewController> {
                 ),
               ),
               const SizedBox(height: 18),
+
               ///momster the challenge
               ViewContainer(
                 width: 662,
@@ -488,8 +527,11 @@ class MainMyPageView extends GetView<MainMyPageViewController> {
                                 fontWeight: FontWeight.w600,
                               ),
                               GestureDetector(
-                                onTap: () {},
-                                child: Image.asset('assets/icons/my_page_button.png'),
+                                onTap: () {
+                                  Get.to(const MtcRecordView());
+                                },
+                                child: Image.asset(
+                                    'assets/icons/my_page_button.png'),
                               ),
                             ],
                           ),
@@ -503,14 +545,17 @@ class MainMyPageView extends GetView<MainMyPageViewController> {
                                 width: 350,
                                 child: Row(
                                   children: [
-                                    Text('최근: ',
+                                    Text(
+                                      '최근: ',
                                       style: TextStyle(
                                         fontWeight: FontWeight.w400,
                                         fontSize: 26,
                                         letterSpacing: -1.3,
                                       ),
                                     ),
-                                    Text(MainMyPageViewController.MainMyPageView_momster,
+                                    Text(
+                                      MainMyPageViewController
+                                          .MainMyPageView_momster,
                                       style: TextStyle(
                                         fontWeight: FontWeight.w400,
                                         fontSize: 26,
@@ -520,7 +565,8 @@ class MainMyPageView extends GetView<MainMyPageViewController> {
                                 ),
                               ),
                               LabelMediumText(
-                                text: MainMyPageViewController.MainMyPageView_momster_data,
+                                text: MainMyPageViewController
+                                    .MainMyPageView_momster_data,
                                 fontWeight: FontWeight.w300,
                                 letterSpacing: -0.65,
                               ),
@@ -533,6 +579,7 @@ class MainMyPageView extends GetView<MainMyPageViewController> {
                 ),
               ),
               const SizedBox(height: 18),
+
               ///training log
               ViewContainer(
                 width: 662,
@@ -561,8 +608,11 @@ class MainMyPageView extends GetView<MainMyPageViewController> {
                                 fontWeight: FontWeight.w600,
                               ),
                               GestureDetector(
-                                onTap: () {},
-                                child: Image.asset('assets/icons/my_page_button.png'),
+                                onTap: () {
+                                  Get.to(const TrainingLogView());
+                                },
+                                child: Image.asset(
+                                    'assets/icons/my_page_button.png'),
                               ),
                             ],
                           ),
@@ -576,14 +626,17 @@ class MainMyPageView extends GetView<MainMyPageViewController> {
                                 width: 350,
                                 child: Row(
                                   children: [
-                                    Text('최근: ',
+                                    Text(
+                                      '최근: ',
                                       style: TextStyle(
                                         fontWeight: FontWeight.w400,
                                         fontSize: 26,
                                         letterSpacing: -1.3,
                                       ),
                                     ),
-                                    Text(MainMyPageViewController.MainMyPageView_training,
+                                    Text(
+                                      MainMyPageViewController
+                                          .MainMyPageView_training,
                                       style: TextStyle(
                                         fontWeight: FontWeight.w400,
                                         fontSize: 26,
@@ -593,7 +646,8 @@ class MainMyPageView extends GetView<MainMyPageViewController> {
                                 ),
                               ),
                               LabelMediumText(
-                                text: MainMyPageViewController.MainMyPageView_training_data,
+                                text: MainMyPageViewController
+                                    .MainMyPageView_training_data,
                                 fontWeight: FontWeight.w300,
                                 letterSpacing: -0.65,
                               ),

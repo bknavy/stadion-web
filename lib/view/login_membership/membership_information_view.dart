@@ -18,7 +18,7 @@ import 'package:remedi_kopo/remedi_kopo.dart';
 //로그인 뷰에서 사용될 Get X controller.
 class MembershipInformationViewController extends GetxController {
   var nameController = TextEditingController();
-  var emailController = TextEditingController();
+  var nicknameController = TextEditingController();
   var callController = TextEditingController();
   var addressController = TextEditingController();
   var addressDetailController = TextEditingController();
@@ -30,7 +30,7 @@ class MembershipInformationViewController extends GetxController {
   var careerController = TextEditingController();
 
   bool nameShow = true;
-  bool emailShow = true;
+  bool nicknameShow = true;
   bool callShow = true;
   bool addressShow = true;
   bool addressDetailShow = true;
@@ -55,8 +55,8 @@ class MembershipInformationViewController extends GetxController {
     update();
   }
 
-  void emailField(bool emailShow) {
-    this.emailShow = emailShow;
+  void nicknameField(bool nicknameShow) {
+    this.nicknameShow = nicknameShow;
     update();
   }
 
@@ -243,7 +243,7 @@ class MembershipInformationView
                   controller.CompleteFind();
                 },
                 backgroundColor: controller.nameShow &&
-                        controller.emailShow &&
+                        controller.nicknameShow &&
                         controller.callShow &&
                         controller.addressShow &&
                         controller.addressDetailShow &&
@@ -259,7 +259,7 @@ class MembershipInformationView
                     style: textThemeKo.headlineSmall!.copyWith(
                       fontWeight: FontWeight.w600,
                       color: controller.nameShow &&
-                              controller.emailShow &&
+                              controller.nicknameShow &&
                               controller.callShow &&
                               controller.addressShow &&
                               controller.addressDetailShow &&
@@ -339,18 +339,18 @@ class MembershipInformationView
               MembershipTextFormField(
                 onChanged: (value) {
                   if (value.isNotEmpty) {
-                    controller.emailField(true);
+                    controller.nicknameField(true);
                   } else {
-                    controller.emailField(false);
+                    controller.nicknameField(false);
                   }
                 },
-                controller: controller.emailController,
+                controller: controller.nicknameController,
                 prefixIcon: Container(
                   width: 150,
                   height: 34,
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    '이메일',
+                    '닉네임',
                     style: textThemeKo.labelLarge!.copyWith(
                       fontWeight: FontWeight.w300,
                       color: colorScheme.onSurface,

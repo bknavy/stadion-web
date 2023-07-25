@@ -47,50 +47,46 @@ class ButtonWithRolloverCamera extends StatelessWidget {
     Get.put(ButtonWithRolloverCameraController());
     return GetBuilder<ButtonWithRolloverCameraController>(
         builder: (controller) {
-        return GestureDetector(
-          onTap: () {
-            controller.onDismiss();
-            onTap();
-          },
-          onTapCancel: () => controller.onDismiss(),
-          onPanDown: (details) {
-            controller.onTouching();
-          },
-          child: Container(
-            width: width,
-            clipBehavior: Clip.hardEdge,
-            height: height,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(
-                  width: 2,
-                  color: colorScheme.shadow,
-                ),
-                color: backgroundColor ?? Colors.transparent),
-            child: Material(
-              color: backgroundColor ?? Colors.transparent,
-              child: InkWell(
-                onTap: onTap,
-                //background를 nullable로 선언하였으나 ??를 통해 기본값을 활용한 예시
-                //a ?? b의 구문의 경우 a를 넣되, a가 null인 경우 b로 대체하여 넣겠다는 의미
-                splashColor: splashColor ?? colorScheme.background,
-                highlightColor: highlightColor ?? colorScheme.background,
-
-                //widget또한 변수로 입력받아 이처럼 사용할 수 있다.
-                child: Image.asset(
-                    controller.isTouching ? 'assets/images/timer_cam_setting_camera_after.png'
-                        : 'assets/images/timer_cam_setting_camera_before.png'
-                ),
+      return GestureDetector(
+        onTap: () {
+          controller.onDismiss();
+          onTap();
+        },
+        onTapCancel: () => controller.onDismiss(),
+        onPanDown: (details) {
+          controller.onTouching();
+        },
+        child: Container(
+          width: width,
+          clipBehavior: Clip.hardEdge,
+          height: height,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(
+                width: 2,
+                color: colorScheme.shadow,
               ),
+              color: backgroundColor ?? Colors.transparent),
+          child: Material(
+            color: backgroundColor ?? Colors.transparent,
+            child: InkWell(
+              onTap: onTap,
+              //background를 nullable로 선언하였으나 ??를 통해 기본값을 활용한 예시
+              //a ?? b의 구문의 경우 a를 넣되, a가 null인 경우 b로 대체하여 넣겠다는 의미
+              splashColor: splashColor ?? colorScheme.background,
+              highlightColor: highlightColor ?? colorScheme.background,
+
+              //widget또한 변수로 입력받아 이처럼 사용할 수 있다.
+              child: Image.asset(controller.isTouching
+                  ? 'assets/images/timer_cam_setting_camera_after.png'
+                  : 'assets/images/timer_cam_setting_camera_before.png'),
             ),
           ),
-        );
-      }
-    );
+        ),
+      );
+    });
   }
 }
-
-
 
 class ButtonWithRolloverMediaController extends GetxController {
   bool isTouching = false;
@@ -134,47 +130,136 @@ class ButtonWithRolloverMedia extends StatelessWidget {
     Get.put(ButtonWithRolloverCameraController());
     return GetBuilder<ButtonWithRolloverCameraController>(
         builder: (controller) {
-          return GestureDetector(
-            onTap: () {
-              controller.onDismiss();
-              onTap();
-            },
-            onTapCancel: () => controller.onDismiss(),
-            onPanDown: (details) {
-              controller.onTouching();
-            },
-            child: Container(
-              width: width,
-              clipBehavior: Clip.hardEdge,
-              height: height,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(
-                    width: 2,
-                    color: colorScheme.shadow,
-                  ),
-                  color: backgroundColor ?? colorScheme.background),
-              child: Material(
-                color: backgroundColor ?? colorScheme.background,
-                child: InkWell(
-                  onTap: onTap,
-                  //background를 nullable로 선언하였으나 ??를 통해 기본값을 활용한 예시
-                  //a ?? b의 구문의 경우 a를 넣되, a가 null인 경우 b로 대체하여 넣겠다는 의미
-                  splashColor: splashColor ?? colorScheme.surfaceVariant,
-                  highlightColor: highlightColor ?? colorScheme.surfaceVariant,
+      return GestureDetector(
+        onTap: () {
+          controller.onDismiss();
+          onTap();
+        },
+        onTapCancel: () => controller.onDismiss(),
+        onPanDown: (details) {
+          controller.onTouching();
+        },
+        child: Container(
+          width: width,
+          clipBehavior: Clip.hardEdge,
+          height: height,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(
+                width: 2,
+                color: colorScheme.shadow,
+              ),
+              color: backgroundColor ?? colorScheme.background),
+          child: Material(
+            color: backgroundColor ?? colorScheme.background,
+            child: InkWell(
+              onTap: onTap,
+              //background를 nullable로 선언하였으나 ??를 통해 기본값을 활용한 예시
+              //a ?? b의 구문의 경우 a를 넣되, a가 null인 경우 b로 대체하여 넣겠다는 의미
+              splashColor: splashColor ?? colorScheme.surfaceVariant,
+              highlightColor: highlightColor ?? colorScheme.surfaceVariant,
 
-                  //widget또한 변수로 입력받아 이처럼 사용할 수 있다.
-                  child: Image.asset(
-                      controller.isTouching ? 'assets/images/mom_level_media_after.png'
-                          : 'assets/images/mom_level_media_before.png'
+              //widget또한 변수로 입력받아 이처럼 사용할 수 있다.
+              child: Image.asset(controller.isTouching
+                  ? 'assets/images/mom_level_media_after.png'
+                  : 'assets/images/mom_level_media_before.png'),
+            ),
+          ),
+        ),
+      );
+    });
+  }
+}
+
+class ButtonWithRolloverUnionController extends GetxController {
+  bool isTouching = false;
+
+  void onTouching() {
+    isTouching = true;
+    update();
+  }
+
+  void onDismiss() {
+    isTouching = false;
+    update();
+  }
+}
+
+class ButtonWithRolloverUnion extends StatelessWidget {
+  const ButtonWithRolloverUnion({
+    required this.onTap,
+    required this.title,
+    this.width = 210,
+    this.height = 412,
+    this.splashColor,
+    this.highlightColor,
+    this.backgroundColor,
+    this.textColor,
+    this.changeTextColor,
+    required this.letterSpacing,
+    Key? key,
+  }) : super(key: key);
+
+  final VoidCallback onTap;
+
+  final double width;
+  final double height;
+  final double letterSpacing;
+
+  final Color? splashColor;
+  final Color? highlightColor;
+
+  final Color? textColor;
+  final Color? changeTextColor;
+
+  final Color? backgroundColor;
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    Get.put(ButtonWithRolloverCameraController());
+    return GetBuilder<ButtonWithRolloverCameraController>(
+        builder: (controller) {
+      return GestureDetector(
+        onTap: () {
+          controller.onDismiss();
+          onTap();
+        },
+        onTapCancel: () => controller.onDismiss(),
+        onPanDown: (details) {
+          controller.onTouching();
+        },
+        child: Container(
+          width: width,
+          clipBehavior: Clip.hardEdge,
+          height: height,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(100),
+              color: backgroundColor ?? colorScheme.background),
+          child: Material(
+            color: backgroundColor ?? colorScheme.background,
+            child: InkWell(
+              onTap: onTap,
+              //background를 nullable로 선언하였으나 ??를 통해 기본값을 활용한 예시
+              //a ?? b의 구문의 경우 a를 넣되, a가 null인 경우 b로 대체하여 넣겠다는 의미
+              splashColor: splashColor ?? colorScheme.surfaceVariant,
+              highlightColor: highlightColor ?? colorScheme.surfaceVariant,
+
+              //widget또한 변수로 입력받아 이처럼 사용할 수 있다.
+              child: Center(
+                child: Text(
+                  title,
+                  style: textThemeEn.labelLarge!.copyWith(
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: letterSpacing,
+                    color: controller.isTouching ? textColor : changeTextColor,
                   ),
                 ),
               ),
             ),
-          );
-        }
-    );
+          ),
+        ),
+      );
+    });
   }
 }
-
-
