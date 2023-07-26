@@ -286,171 +286,166 @@ class MembershipInformationView
     return Column(
       children: [
         GetBuilder<MembershipInformationViewController>(builder: (context) {
-          return Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 94),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '기본정보(필수)',
-                      style: textThemeKo.headlineSmall!.copyWith(
-                        fontWeight: FontWeight.w600,
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 94),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '기본정보(필수)',
+                  style: textThemeKo.headlineSmall!.copyWith(
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                const SizedBox(height: 21.5),
+                Container(
+                  width: 562,
+                  height: 2,
+                  decoration: BoxDecoration(color: Colors.black),
+                ),
+                const SizedBox(height: 9.5),
+                ///이름 입력창
+                MembershipTextFormField(
+                  onChanged: (value) {
+                    if (value.isNotEmpty) {
+                      controller.nameField(true);
+                    } else {
+                      controller.nameField(false);
+                    }
+                  },
+                  controller: controller.nameController,
+                  prefixIcon: Container(
+                    width: 150,
+                    height: 34,
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      '이름',
+                      style: textThemeKo.labelLarge!.copyWith(
+                        fontWeight: FontWeight.w300,
+                        color: colorScheme.onSurface,
                       ),
                     ),
-                    const SizedBox(height: 21.5),
-                    Container(
-                      width: 562,
-                      height: 2,
-                      decoration: BoxDecoration(color: Colors.black),
-                    ),
-                    const SizedBox(height: 9.5),
-                  ],
+                  ),
                 ),
-              ),
+                const SizedBox(height: 10),
 
-              ///이름 입력창
-              MembershipTextFormField(
-                onChanged: (value) {
-                  if (value.isNotEmpty) {
-                    controller.nameField(true);
-                  } else {
-                    controller.nameField(false);
-                  }
-                },
-                controller: controller.nameController,
-                prefixIcon: Container(
-                  width: 150,
-                  height: 34,
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    '이름',
-                    style: textThemeKo.labelLarge!.copyWith(
-                      fontWeight: FontWeight.w300,
-                      color: colorScheme.onSurface,
+                ///이메일 입력창
+                MembershipTextFormField(
+                  onChanged: (value) {
+                    if (value.isNotEmpty) {
+                      controller.nicknameField(true);
+                    } else {
+                      controller.nicknameField(false);
+                    }
+                  },
+                  controller: controller.nicknameController,
+                  prefixIcon: Container(
+                    width: 150,
+                    height: 34,
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      '닉네임',
+                      style: textThemeKo.labelLarge!.copyWith(
+                        fontWeight: FontWeight.w300,
+                        color: colorScheme.onSurface,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 10),
+                const SizedBox(height: 10),
 
-              ///이메일 입력창
-              MembershipTextFormField(
-                onChanged: (value) {
-                  if (value.isNotEmpty) {
-                    controller.nicknameField(true);
-                  } else {
-                    controller.nicknameField(false);
-                  }
-                },
-                controller: controller.nicknameController,
-                prefixIcon: Container(
-                  width: 150,
-                  height: 34,
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    '닉네임',
-                    style: textThemeKo.labelLarge!.copyWith(
-                      fontWeight: FontWeight.w300,
-                      color: colorScheme.onSurface,
+                ///휴대폰 입력창
+                MembershipTextFormField(
+                  onChanged: (value) {
+                    if (value.isNotEmpty) {
+                      controller.callField(true);
+                    } else {
+                      controller.callField(false);
+                    }
+                  },
+                  controller: controller.callController,
+                  prefixIcon: Container(
+                    width: 150,
+                    height: 34,
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      '휴대폰 번호',
+                      style: textThemeKo.labelLarge!.copyWith(
+                        fontWeight: FontWeight.w300,
+                        color: colorScheme.onSurface,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 10),
+                const SizedBox(height: 10),
 
-              ///휴대폰 입력창
-              MembershipTextFormField(
-                onChanged: (value) {
-                  if (value.isNotEmpty) {
-                    controller.callField(true);
-                  } else {
-                    controller.callField(false);
-                  }
-                },
-                controller: controller.callController,
-                prefixIcon: Container(
-                  width: 150,
-                  height: 34,
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    '휴대폰 번호',
-                    style: textThemeKo.labelLarge!.copyWith(
-                      fontWeight: FontWeight.w300,
-                      color: colorScheme.onSurface,
+                ///주소 입력창
+                MembershipTextFormField(
+                  onChanged: (value) {
+                    if (value.isNotEmpty) {
+                      controller.addressSearchField(true, false);
+                    } else {
+                      controller.addressSearchField(false, true);
+                    }
+                  },
+                  controller: controller.addressController,
+                  prefixIcon: Container(
+                    width: 150,
+                    height: 34,
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      '주소',
+                      style: textThemeKo.labelLarge!.copyWith(
+                        fontWeight: FontWeight.w300,
+                        color: colorScheme.onSurface,
+                      ),
                     ),
                   ),
-                ),
-              ),
-              const SizedBox(height: 10),
-
-              ///주소 입력창
-              MembershipTextFormField(
-                onChanged: (value) {
-                  if (value.isNotEmpty) {
-                    controller.addressSearchField(true, false);
-                  } else {
-                    controller.addressSearchField(false, true);
-                  }
-                },
-                controller: controller.addressController,
-                prefixIcon: Container(
-                  width: 150,
-                  height: 34,
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    '주소',
-                    style: textThemeKo.labelLarge!.copyWith(
-                      fontWeight: FontWeight.w300,
-                      color: colorScheme.onSurface,
-                    ),
-                  ),
-                ),
-                suffixIcon: controller.addressSearchShow
-                    ? GestureDetector(
-                        onTap: () {
-                          controller.AddressFind();
-                        },
-                        child: Container(
-                          width: 200,
-                          height: 50,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(12)),
-                            color: colorScheme.onBackground,
-                          ),
-                          alignment: Alignment.center,
-                          child: Text(
-                            '검색하기',
-                            style: textThemeKo.labelLarge!.copyWith(
-                              fontWeight: FontWeight.w600,
-                              color: colorScheme.onSurface,
-                            ),
-                          ),
+                  suffixIcon: controller.addressSearchShow
+                      ? GestureDetector(
+                    onTap: () {
+                      controller.AddressFind();
+                    },
+                    child: Container(
+                      width: 200,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(12)),
+                        color: colorScheme.onBackground,
+                      ),
+                      alignment: Alignment.center,
+                      child: Text(
+                        '검색하기',
+                        style: textThemeKo.labelLarge!.copyWith(
+                          fontWeight: FontWeight.w600,
+                          color: colorScheme.onSurface,
                         ),
-                      )
-                    : null,
-              ),
-              const SizedBox(height: 10),
-
-              ///상세주소 입력창
-              MembershipTextFormField(
-                onChanged: (value) {
-                  if (value.isNotEmpty) {
-                    controller.addressDetailField(true);
-                  } else {
-                    controller.addressDetailField(false);
-                  }
-                },
-                controller: controller.addressDetailController,
-                prefixIcon: Container(
-                  width: 150,
-                  height: 34,
-                  alignment: Alignment.centerLeft,
-                  child: Text(''),
+                      ),
+                    ),
+                  )
+                      : null,
                 ),
-              ),
-            ],
+                const SizedBox(height: 10),
+
+                ///상세주소 입력창
+                MembershipTextFormField(
+                  onChanged: (value) {
+                    if (value.isNotEmpty) {
+                      controller.addressDetailField(true);
+                    } else {
+                      controller.addressDetailField(false);
+                    }
+                  },
+                  controller: controller.addressDetailController,
+                  prefixIcon: Container(
+                    width: 150,
+                    height: 34,
+                    alignment: Alignment.centerLeft,
+                    child: Text(''),
+                  ),
+                ),
+              ],
+            ),
           );
         }),
       ],
@@ -462,71 +457,63 @@ class MembershipInformationView
     return Column(
       children: [
         GetBuilder<MembershipInformationViewController>(builder: (context) {
-          return Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 94),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '신체정보(필수)',
-                      style: textThemeKo.headlineSmall!.copyWith(
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    const SizedBox(height: 21.5),
-                    Container(
-                      width: 562,
-                      height: 2,
-                      decoration: BoxDecoration(color: Colors.black),
-                    ),
-                    const SizedBox(height: 9.5),
-                  ],
-                ),
-              ),
-
-              ///성별 입력창
-              MembershipTextFormField(
-                onChanged: (value) {
-                  if (value.isNotEmpty) {
-                    controller.sexField(true);
-                  } else {
-                    controller.sexField(false);
-                  }
-                },
-                onTap: () {
-                  controller.SexFind();
-                },
-                controller: controller.sexController,
-                prefixIcon: Container(
-                  width: 120,
-                  height: 34,
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    '성별',
-                    style: textThemeKo.labelLarge!.copyWith(
-                      fontWeight: FontWeight.w300,
-                      color: colorScheme.onSurface,
-                    ),
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 94),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '신체정보(필수)',
+                  style: textThemeKo.headlineSmall!.copyWith(
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
-                suffixIcon: IconButton(
-                  onPressed: () {
+                const SizedBox(height: 21.5),
+                Container(
+                  width: 562,
+                  height: 2,
+                  decoration: BoxDecoration(color: Colors.black),
+                ),
+                const SizedBox(height: 9.5),
+                ///성별 입력창
+                MembershipTextFormField(
+                  onChanged: (value) {
+                    if (value.isNotEmpty) {
+                      controller.sexField(true);
+                    } else {
+                      controller.sexField(false);
+                    }
+                  },
+                  onTap: () {
                     controller.SexFind();
                   },
-                  icon: Icon(
-                    Icons.check,
-                    color: Colors.black,
-                    size: 28,
+                  controller: controller.sexController,
+                  prefixIcon: Container(
+                    width: 120,
+                    height: 34,
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      '성별',
+                      style: textThemeKo.labelLarge!.copyWith(
+                        fontWeight: FontWeight.w300,
+                        color: colorScheme.onSurface,
+                      ),
+                    ),
+                  ),
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      controller.SexFind();
+                    },
+                    icon: Icon(
+                      Icons.check,
+                      color: Colors.black,
+                      size: 28,
+                    ),
                   ),
                 ),
-              ),
 
-              ///신장 체중 입력창
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 94),
-                child: Row(
+                ///신장 체중 입력창
+                Row(
                   children: [
                     MembershipTextFormSmallField(
                       onChanged: (value) {
@@ -601,47 +588,47 @@ class MembershipInformationView
                     ),
                   ],
                 ),
-              ),
-              const SizedBox(height: 10),
+                const SizedBox(height: 10),
 
-              ///생년월일 입력창
-              MembershipTextFormField(
-                onChanged: (value) {
-                  if (value.isNotEmpty) {
-                    controller.birthdayField(true);
-                  } else {
-                    controller.birthdayField(false);
-                  }
-                },
-                onTap: () {
-                  controller.BirthdayFind();
-                },
-                controller: controller.birthdayController,
-                prefixIcon: Container(
-                  width: 120,
-                  height: 34,
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    '생년월일',
-                    style: textThemeKo.labelLarge!.copyWith(
-                      fontWeight: FontWeight.w300,
-                      color: colorScheme.onSurface,
+                ///생년월일 입력창
+                MembershipTextFormField(
+                  onChanged: (value) {
+                    if (value.isNotEmpty) {
+                      controller.birthdayField(true);
+                    } else {
+                      controller.birthdayField(false);
+                    }
+                  },
+                  onTap: () {
+                    controller.BirthdayFind();
+                  },
+                  controller: controller.birthdayController,
+                  prefixIcon: Container(
+                    width: 120,
+                    height: 34,
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      '생년월일',
+                      style: textThemeKo.labelLarge!.copyWith(
+                        fontWeight: FontWeight.w300,
+                        color: colorScheme.onSurface,
+                      ),
+                    ),
+                  ),
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      controller.BirthdayFind();
+                    },
+                    icon: Icon(
+                      Icons.check,
+                      color: Colors.black,
+                      size: 28,
                     ),
                   ),
                 ),
-                suffixIcon: IconButton(
-                  onPressed: () {
-                    controller.BirthdayFind();
-                  },
-                  icon: Icon(
-                    Icons.check,
-                    color: Colors.black,
-                    size: 28,
-                  ),
-                ),
-              ),
-              const SizedBox(height: 10),
-            ],
+                const SizedBox(height: 10),
+              ],
+            ),
           );
         }),
       ],

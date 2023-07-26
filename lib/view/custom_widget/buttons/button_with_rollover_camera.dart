@@ -189,14 +189,16 @@ class ButtonWithRolloverUnion extends StatelessWidget {
   const ButtonWithRolloverUnion({
     required this.onTap,
     required this.title,
-    this.width = 210,
-    this.height = 412,
+    required this.width,
+    required this.height,
+    this.isEnglish = true,
+    this.isRadius = true,
+    this.isBorder = true,
     this.splashColor,
     this.highlightColor,
     this.backgroundColor,
     this.textColor,
     this.changeTextColor,
-    required this.letterSpacing,
     Key? key,
   }) : super(key: key);
 
@@ -204,7 +206,6 @@ class ButtonWithRolloverUnion extends StatelessWidget {
 
   final double width;
   final double height;
-  final double letterSpacing;
 
   final Color? splashColor;
   final Color? highlightColor;
@@ -214,6 +215,10 @@ class ButtonWithRolloverUnion extends StatelessWidget {
 
   final Color? backgroundColor;
   final String title;
+
+  final bool isEnglish;
+  final bool isRadius;
+  final bool isBorder;
 
   @override
   Widget build(BuildContext context) {
@@ -234,7 +239,10 @@ class ButtonWithRolloverUnion extends StatelessWidget {
           clipBehavior: Clip.hardEdge,
           height: height,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(100),
+              borderRadius: isRadius
+                  ? BorderRadius.circular(12)
+                  : BorderRadius.circular(100),
+              border: isBorder ? null : Border.all(color: colorScheme.onSurface,width: 1),
               color: backgroundColor ?? colorScheme.background),
           child: Material(
             color: backgroundColor ?? colorScheme.background,
@@ -249,11 +257,18 @@ class ButtonWithRolloverUnion extends StatelessWidget {
               child: Center(
                 child: Text(
                   title,
-                  style: textThemeEn.labelLarge!.copyWith(
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: letterSpacing,
-                    color: controller.isTouching ? textColor : changeTextColor,
-                  ),
+                  style: isEnglish
+                      ? textThemeEn.labelLarge!.copyWith(
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: -1.4,
+                          color: controller.isTouching
+                              ? textColor
+                              : changeTextColor)
+                      : textThemeEn.headlineSmall!.copyWith(
+                          fontWeight: FontWeight.w600,
+                          color: controller.isTouching
+                              ? textColor
+                              : changeTextColor),
                 ),
               ),
             ),

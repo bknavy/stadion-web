@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:stadion_project/style_config/color_scheme.dart';
 import 'package:stadion_project/style_config/text_theme.dart';
 import 'package:stadion_project/view/custom_widget/buttons/button_with_rollover.dart';
+import 'package:stadion_project/view/custom_widget/buttons/button_with_rollover_camera.dart';
 import 'package:stadion_project/view/custom_widget/buttons/text_toggle_button.dart';
 import 'package:stadion_project/view/custom_widget/custom_app_bar.dart';
 import 'package:stadion_project/view/custom_widget/custom_text.dart';
@@ -173,24 +174,18 @@ class MainMyPageView extends GetView<MainMyPageViewController> {
                       ],
                     ),
                   ),
-                  Container(
+                  ButtonWithRolloverUnion(
                     width: 208,
                     height: 80,
-                    child: ButtonWithRollover(
-                      onTap: () {
-                        Get.to(const MyPageProfileView());
-                      },
-                      backgroundColor: colorScheme.onBackground,
-                      child: Center(
-                        child: Text(
-                          'PROFILE',
-                          style: textThemeEn.headlineSmall!.copyWith(
-                            fontWeight: FontWeight.w600,
-                            color: colorScheme.surfaceVariant,
-                          ),
-                        ),
-                      ),
-                    ),
+                    onTap: () {
+                      Get.to(const MyPageProfileView());
+                    },
+                    backgroundColor: colorScheme.onBackground,
+                    highlightColor: Color(0xfff9cc16),
+                    title: 'PROFILE',
+                    isEnglish: false,
+                    textColor: colorScheme.shadow,
+                    changeTextColor: colorScheme.surfaceVariant,
                   ),
                 ],
               ),

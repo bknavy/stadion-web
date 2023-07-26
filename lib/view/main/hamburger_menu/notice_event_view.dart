@@ -25,14 +25,6 @@ class NoticeEventViewController extends GetxController {
     this.isNotice = isNotice;
     update();
   }
-
-  final views = [
-    MainHomeView(),
-    MainMomLevelView(),
-    MainMomsterView(),
-    MainNumbersView(),
-    MainWodView(),
-  ];
 }
 
 class NoticeEventView extends GetView<NoticeEventViewController> {

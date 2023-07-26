@@ -54,7 +54,6 @@ class LoginTextFormField extends StatelessWidget {
   }
 }
 
-
 class MembershipTextFormField extends StatelessWidget {
   const MembershipTextFormField({
     this.controller,
@@ -73,33 +72,29 @@ class MembershipTextFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 94),
-      child: Container(
-        alignment: Alignment.centerLeft,
-        height: 90,
-        decoration: BoxDecoration(
-          border: Border(bottom: BorderSide(color: colorScheme.onSurface)),
+    return Container(
+      alignment: Alignment.centerLeft,
+      height: 90,
+      decoration: BoxDecoration(
+        border: Border(bottom: BorderSide(color: colorScheme.onSurface)),
+      ),
+      child: TextFormField(
+        onChanged: onChanged,
+        onTap: onTap,
+        controller: controller,
+        style: textThemeKo.labelLarge!.copyWith(
+          fontWeight: FontWeight.w300,
+          color: colorScheme.shadow,
         ),
-        child: TextFormField(
-          onChanged: onChanged,
-          onTap: onTap,
-          controller: controller,
-          style: textThemeKo.labelLarge!.copyWith(
-            fontWeight: FontWeight.w300,
-            color: colorScheme.shadow,
-          ),
-          decoration: InputDecoration(
-            border: InputBorder.none,
-            prefixIcon: prefixIcon,
-            suffixIcon: suffixIcon,
-          ),
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          prefixIcon: prefixIcon,
+          suffixIcon: suffixIcon,
         ),
       ),
     );
   }
 }
-
 
 class MembershipTextFormSmallField extends StatelessWidget {
   const MembershipTextFormSmallField({
@@ -144,7 +139,6 @@ class MembershipTextFormSmallField extends StatelessWidget {
   }
 }
 
-
 class MembershipPopupTextFormField extends StatelessWidget {
   const MembershipPopupTextFormField({
     required this.hintText,
@@ -185,7 +179,8 @@ class MembershipPopupTextFormField extends StatelessWidget {
             border: InputBorder.none,
             hintText: hintText,
             hintStyle: textThemeKo.labelSmall!.copyWith(
-              fontWeight: FontWeight.w300, color: colorScheme.onSurface,
+              fontWeight: FontWeight.w300,
+              color: colorScheme.onSurface,
             ),
           ),
         ),
@@ -193,7 +188,6 @@ class MembershipPopupTextFormField extends StatelessWidget {
     );
   }
 }
-
 
 class MainScreenTextFormField extends StatelessWidget {
   const MainScreenTextFormField({
@@ -232,19 +226,23 @@ class MainScreenTextFormField extends StatelessWidget {
           hintText: hintText,
           hintStyle: textThemeEn.labelLarge!.copyWith(
             fontWeight: FontWeight.w300,
-            color: colorScheme.shadow,),
+            color: colorScheme.shadow,
+          ),
           suffixIcon: IconButton(
-            onPressed: (){
+            onPressed: () {
               //controller.WodBoxFind();
             },
-            icon: Icon(Icons.check, color: Colors.black,size: 28,),
+            icon: Icon(
+              Icons.check,
+              color: Colors.black,
+              size: 28,
+            ),
           ),
         ),
       ),
     );
   }
 }
-
 
 class MainScreenPopupTextFormField extends StatelessWidget {
   const MainScreenPopupTextFormField({
@@ -259,6 +257,7 @@ class MainScreenPopupTextFormField extends StatelessWidget {
     this.prefixIcon,
     this.suffixIcon,
     this.hintStyle,
+    this.textAlign = TextAlign.center,
     Key? key,
   }) : super(key: key);
 
@@ -273,6 +272,7 @@ class MainScreenPopupTextFormField extends StatelessWidget {
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final TextStyle? hintStyle;
+  final TextAlign textAlign;
 
   @override
   Widget build(BuildContext context) {
@@ -288,7 +288,8 @@ class MainScreenPopupTextFormField extends StatelessWidget {
         onChanged: onChanged,
         onTap: onTap,
         controller: controller,
-        textAlign: TextAlign.center,
+        textAlign: textAlign,
+        //textAlign: TextAlign.center,
         style: style,
         decoration: InputDecoration(
           border: InputBorder.none,
@@ -302,4 +303,65 @@ class MainScreenPopupTextFormField extends StatelessWidget {
   }
 }
 
+class MyPageTextFormField extends StatelessWidget {
+  const MyPageTextFormField({
+    required this.hintText,
+    required this.width,
+    required this.height,
+    required this.obscureText,
+    this.controller,
+    this.onChanged,
+    this.onTap,
+    this.prefixIcon,
+    this.suffixIcon,
+    this.hintStyle,
+    this.textAlign = TextAlign.center,
+    Key? key,
+  }) : super(key: key);
 
+  final String hintText;
+  final double width;
+  final double height;
+  final TextEditingController? controller;
+  final GestureTapCallback? onTap;
+  final ValueChanged<String>? onChanged;
+  final Widget? prefixIcon;
+  final Widget? suffixIcon;
+  final TextStyle? hintStyle;
+  final TextAlign textAlign;
+  final bool obscureText;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: width,
+      height: height,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        color: colorScheme.background,
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: TextFormField(
+          onChanged: onChanged,
+          onTap: onTap,
+          controller: controller,
+          obscureText: obscureText,
+          textAlign: textAlign,
+          style: textThemeKo.labelLarge!.copyWith(
+            fontWeight: FontWeight.w300,
+            color: colorScheme.shadow,
+          ),
+          decoration: InputDecoration(
+            border: InputBorder.none,
+            hintText: hintText,
+            hintStyle: hintStyle,
+            prefixIcon: prefixIcon,
+            suffixIcon: suffixIcon,
+          ),
+        ),
+      ),
+    );
+  }
+}
